@@ -1,5 +1,8 @@
 package ru.kfu.itis.filter;
 
+import ru.kfu.itis.dao.UserDAO;
+import ru.kfu.itis.entity.User;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +25,13 @@ public class AuthFilter implements Filter {
 
         if( session == null ) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } else{
+            User user = (User) session.getAttribute("user");
+            UserDAO userDAO = new UserDAO();
+            if(userDAO.get(user.getId()) != user || user == null) {
+                session.invalidate();
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
+            }
         }
     }
 

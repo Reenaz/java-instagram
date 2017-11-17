@@ -47,5 +47,39 @@ public class UserDAO extends AbstractDAO{
         return userId;
     }
 
+    public User get(int id) {
+        Connection connection = getConnection();
+        User user = null;
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS WHERE ID=?");
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                user = new User(
+                        id,
+                        rs.getString("USERNAME"),
+                        rs.getString("EMAIL"),
+                        rs.getString("PASSWORD"),
+                        rs.getString("DESCRIPTION"),
+                        rs.getString("NAME"),
+                        rs.getString("PHONE_NUMBER"),
+                        rs.getInt("GENDER"),
+                        rs.getInt("TYPE"),
+                        rs.getBlob("PHOTO")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return user;
+    }
+
 
 }
