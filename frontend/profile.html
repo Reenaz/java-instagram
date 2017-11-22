@@ -2,18 +2,13 @@
 <html>
 <head>
   <title>Imstagram</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-  <!-- Main css -->
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/base_style.css">
-  
+  <link rel="stylesheet" type="text/css" href="css/profile_style.css">
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,30 +36,62 @@
       </div><!-- /.container-fluid -->
   </nav>
 
-
-  <div class="post">
-      <div class="user-info">
-      <i class="fa fa-user user-image"></i>
-      <span class="pull-right">35m</span>
-      </div>
-      <img src="assets/img/post1.jpg" width="650" height="400">
-      <div class="caption">
-        <span><strong id="count-likes"></strong><strong> likes</strong></span>
-        <h4>
-          <strong>brist </strong>
-          Developer for life...#projaro
-        </h4>
-        <p class="default-post"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-        <hr>
-        <div>
-          <span class="like"><i id="heart" class="fa fa-heart-o" onclick="newLikes();"></i></span>
-          <textarea data-key="13" class="comment" cols="60" rows="1" placeholder="Add comment"></textarea>
-        </div>
-
-      </div>
+  <!-- ACTUAL BODY -->
+  <div class="container">
+    <div class="jumbotron">
+      <h1><i class="fa fa-user-circle" aria-hidden="true"></i> Reenaz</h1>
+      <p>Imaginary website for sharing pics with your imaginary friends!</p>
     </div>
 
+
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+        <img src="https://source.unsplash.com/2PODhmrvLik">        
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/jMd3WS9LBcc">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/AdfaEuotl_Q">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/AsahNlC0VhQ">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/mXQyEcINwa8">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/sf4ihZObGOY">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/Kwi60PbAM9I">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/bQxGg8Vx1Vc">
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 ">
+        <div class="thumbnail">
+          <img src="https://source.unsplash.com/PFxSKx4kc5U">
+        </div>
+      </div>
+    </div>
+  </div>
 
 <footer><div class="container-fluid">
   <div class="row">
@@ -85,9 +112,14 @@
 </footer>
 
 
-<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/main.js"></script>
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 </div>
 </body>
 </html>

@@ -2,19 +2,16 @@
 <html>
 <head>
   <title>Imstagram</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-  <!-- Main css -->
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/base_style.css">
+  <link rel="stylesheet" type="text/css" href="css/addPost_style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
   
 </head>
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" >
+<nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -41,30 +38,45 @@
       </div><!-- /.container-fluid -->
   </nav>
 
-
-  <div class="post">
-      <div class="user-info">
-      <i class="fa fa-user user-image"></i>
-      <span class="pull-right">35m</span>
-      </div>
-      <img src="assets/img/post1.jpg" width="650" height="400">
-      <div class="caption">
-        <span><strong id="count-likes"></strong><strong> likes</strong></span>
-        <h4>
-          <strong>brist </strong>
-          Developer for life...#projaro
-        </h4>
-        <p class="default-post"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-        <hr>
-        <div>
-          <span class="like"><i id="heart" class="fa fa-heart-o" onclick="newLikes();"></i></span>
-          <textarea data-key="13" class="comment" cols="60" rows="1" placeholder="Add comment"></textarea>
+<main>
+  <div class="container">
+	<div class="row">
+        <div class="title col-md-6 col-md-offset-3">
+          <h1>Добавление записи</h1>
         </div>
+        <div class="col-md-6 col-md-offset-3">
+            <form action="" method="post" id="fileForm" role="form">
+            <fieldset>
 
-      </div>
-    </div>
+            <div class="form-group">
+            <label for="description"><span class="req">* </span> Description:</label>
+                    <input required type="text" name="description" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" /> 
+            </div>
 
+            <div class="form-group"> 	 
+                <label for="lcoation"><span class="req">* </span> Location: </label>
+                    <input class="form-control" type="text" name="location" id = "lcoation" onkeyup = "Validate(this)" required /> 
+                        <div id="errFirst"></div>    
+            </div>
+            
+            <div class="from-group">
+              <label class="control-label">Выберите фото</label>
+	      	    <input type="file" class="filestyle" data-input="false">
+            </div>           
+
+            <div class="form-group">
+                <input class="btn btn-success reg_btn" type="submit" name="submit_reg" value="Добавить запись">
+            </div>
+            </fieldset>
+            </form><!-- ends register form -->
+
+<script type="text/javascript">
+  document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+</script>
+        
+</div>
+
+</main>
 
 <footer><div class="container-fluid">
   <div class="row">
@@ -82,12 +94,8 @@
   <span id='copyright'>© 2017 INSTAGRAM</span>
   </div>
   </div>
+  </div>
 </footer>
 
-
-<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/main.js"></script>
-</div>
 </body>
 </html>
