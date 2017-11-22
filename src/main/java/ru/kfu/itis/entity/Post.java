@@ -8,22 +8,22 @@ import java.sql.Blob;
 public class Post {
     private int id;
     private int userId;
-    private Blob photo;
+    private String photo;
     private String description;
     private String location;
 
     public Post() {
     }
 
-    public Post(int userId, Blob photo, String description, String location) {
+    public Post(int id, int userId, String photo, String description, String location) {
+        this.id = id;
         this.userId = userId;
         this.photo = photo;
         this.description = description;
         this.location = location;
     }
 
-    public Post(int id, int userId, Blob photo, String description, String location) {
-        this.id = id;
+    public Post(int userId, String photo, String description, String location) {
         this.userId = userId;
         this.photo = photo;
         this.description = description;
@@ -46,11 +46,11 @@ public class Post {
         this.userId = userId;
     }
 
-    public Blob getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Blob photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -68,5 +68,16 @@ public class Post {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", photo='" + photo + '\'' +
+                ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

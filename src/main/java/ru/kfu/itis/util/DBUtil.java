@@ -33,6 +33,7 @@ public class DBUtil {
         } catch (ClassNotFoundException ex) {
             // log an exception. for example:
             System.out.println("Driver not found.");
+            ex.printStackTrace();
 
         }
         return connection;

@@ -18,15 +18,17 @@ public class AuthFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("auth filtr start");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
         HttpSession session = req.getSession();
 
         if( session == null ) {
+            System.out.println("auth filter: session null");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else{
-            User user = (User) session.getAttribute("user");
+            User user = (User) session.getAttribute("auth");
             UserDAO userDAO = new UserDAO();
             if(userDAO.get(user.getId()) != user || user == null) {
                 session.invalidate();

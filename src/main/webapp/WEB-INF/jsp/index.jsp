@@ -12,17 +12,14 @@
   </head>
   <body>
   <h1>HELLO MAN!</h1>
-  <h3>Login</h3>
-  <hr/>
-  <form name=”loginForm” method=”POST” action=”LoginServlet”>
-    <input type=”hidden” name=”command” value=”login” />
+  <form method="POST" action="/">
     Login:<br/>
-    <input type=”text” name=”login” value=””>
+    <input type="text" name="userName">
     <br/>
     Password:<br/>
-    <input type=”password” name=”password” value=””>
+    <input type="password" name="password">
     <br/>
-    <input type=”submit” value=”Enter”>
+    <input type="submit" value="Sign in">
   </form>
   <hr/>
   </body>

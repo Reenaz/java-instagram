@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Заголовок</title>
+
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <div id='nav-container'>
+  <div id='navbar'>
+    <div id='left'>
+      <a href='#'><img src='img/instagram.png' id='logo-icon'></a>
+      <a href='#'><img src='img/instagram.png' id='logo-name'></a>
+    </div>
+    <div id='center'><input id="input-field" type="text" placeholder='Search' style="text-align: center"></div>
+    <div id='right'>
+      <a href='#'><img src='http://freeiconbox.com/icon/256/23228.png' class='nav-icon'></a>
+      <a href='#'><img src='http://image.flaticon.com/icons/png/128/126/126471.png' class='nav-icon'></a>
+      <a href='#'><img src='http://www.iconsfind.com/wp-content/uploads/2015/11/20151128_56592ddb44f95-210x210.png' class='nav-icon'></a>
+    </div>
+  </div>
+</div>
+
+<div class="main-body"></div>
+
+<div id='footer'>
+  <a href='#'>ABOUT US</a>
+  <a href='#'>SUPPORT</a>
+  <a href='#'>BLOG</a>
+  <a href='#'>PRESS</a>
+  <a href='#'>API</a>
+  <a href='#'>JOBS</a>
+  <a href='#'>PRIVACY</a>
+  <a href='#'>TERMS</a>
+  <a href='#'>DIRECTORY</a>
+  <a href='#'>LANGUAGE</a>
+  <span id='copyright'>© 2016 INSTAGRAM</span>
+</div>
+<script>
+      let jsonURL = "https://codesmith-precourse.firebaseio.com/instagram/-JqL35o8u6t3dTQaFXSV.json";
+  let username = "brandonn1231";
+
+  $(document).ready(function() {
+    // slower, synchronous version
+    // let newArr = [];
+    // $.ajax({
+    //   url: jsonURL,
+    //   async: false,
+    //   success: function(data) {
+    //     data.forEach(function(element) {
+    //       newArr.push(element);
+    //     });
+    //   }
+    // });
+    // newArr.forEach(function(element) {
+    //   $.ajax({
+    //     url: element,
+    //     success: function() {
+    //       $('.main-body').append('<img src=' + element + '>');
+    //     }
+    //   })
+    // });
+
+    // faster, asynchronous version
+    $.ajax({
+      url: 'https://codesmith-precourse.firebaseio.com/instagram/-JqL35o8u6t3dTQaFXSV.json',
+      success: function(data) {
+        data.forEach(function(element) {
+
+          $.ajax({
+            url: element,
+            success: function() {
+              $('.main-body').append(
+                '<div class="header">' +
+                '<span class="prf-pic"><img src="http://image.mp3.zdn.vn/thumb/165_165/avatars/f/3/f3ccdd27d2000e3f9255a7e3e2c48800_1349926257.jpg"></span>' +
+                '<span class="account-name">' + username + '</span>' +
+                '<span class="timestamp">12h</span>' +
+                '</div>' +
+                '<img src=' + element + ' class="feed-img">' +
+                '<div class="img-footer">' +
+                '<div class="comments">' +
+                '<div class="comments-content"></div>' +
+                '<div class="comments-field">' + '<span class="heart-pic"><img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=110530409"></span>' + '<input type="text" class="text-box" placeholder="Add a comment..."></div>' +
+                '</div>' +
+                '</div>');
+            }
+          });
+
+        });
+      }
+    });
+
+    //code for like functionality
+    $(document).on('dblclick', 'img.feed-img', function() {
+      $(this).next().find('.heart-pic img').attr('src', 'http://www.pngall.com/wp-content/uploads/2016/04/Instagram-Heart-Free-Download-PNG.png');
+      // $(this).next().find('.comments-content').append('<span><b>' + username + ' likes this</b></span>');
+    });
+
+    //code for comment functionality
+    $(document).on('keypress', 'input.text-box', function(value) {
+      if (value.keyCode === 13) {
+        let commentVal = $(this).val();
+        $(this).parent().parent().find('.comments-content').append('<span class="comment-name"><b>' + username + '</b></span>' + '<span class="posted-comment">' + commentVal + '</span></div></br>');
+        $(this).val('');
+      }
+    });
+  }); //end of doc ready
+</script>
+
+</body>
+</html>

@@ -16,7 +16,7 @@ public class LikeDAO extends AbstractDAO {
 
         Connection connection = getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".POSTS(POST_ID, USER_ID) VALUES(?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(POST_ID, USER_ID) VALUES(?,?)");
 
             ps.setInt(1, like.getPostId());
             ps.setInt(2, like.getUserId());

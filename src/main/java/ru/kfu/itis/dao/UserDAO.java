@@ -2,6 +2,8 @@ package ru.kfu.itis.dao;
 
 import ru.kfu.itis.entity.User;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +20,7 @@ public class UserDAO extends AbstractDAO{
         int userId = -1;
 
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".USERS(USERNAME, EMAIL, PASSWORD, DESCRIPTION, NAME, PHONE_NUMBER, GENDER, TYPE, PHOTO) VALUES(?,?,?,?,?,?,?,?,?)", new String[]{"ID"});
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"USERS\"(\"USERNAME\", \"EMAIL\", \"PASSWORD\", \"DESCRIPTION\", \"NAME\", \"PHONE_NUMBER\", \"GENDER\", \"TYPE\", \"PHOTO_URL\") VALUES(?,?,?,?,?,?,?,?,?)", new String[]{"ID"});
 
             ps.setString(1, user.getUserName());
             ps.setString(2, user.getEmail());
@@ -28,7 +30,7 @@ public class UserDAO extends AbstractDAO{
             ps.setString(6, user.getPhoneNumber());
             ps.setInt(7, user.getGender());
             ps.setInt(8, user.getType());
-            ps.setBlob(9, user.getPhoto());
+            ps.setString(9, user.getPhoto());
 
             ps.executeUpdate();
 
@@ -52,7 +54,7 @@ public class UserDAO extends AbstractDAO{
         User user = null;
 
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS WHERE ID=?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"java-instagram\".\"USERS\" WHERE \"ID\"=?");
 
             ps.setInt(1, id);
 
@@ -60,7 +62,7 @@ public class UserDAO extends AbstractDAO{
 
             while(rs.next()){
                 user = new User(
-                        id,
+                        rs.getInt("ID"),
                         rs.getString("USERNAME"),
                         rs.getString("EMAIL"),
                         rs.getString("PASSWORD"),
@@ -69,7 +71,7 @@ public class UserDAO extends AbstractDAO{
                         rs.getString("PHONE_NUMBER"),
                         rs.getInt("GENDER"),
                         rs.getInt("TYPE"),
-                        rs.getBlob("PHOTO")
+                        rs.getString("PHOTO_URL")
                 );
             }
         } catch (SQLException e) {
@@ -79,6 +81,70 @@ public class UserDAO extends AbstractDAO{
         }
 
         return user;
+    }
+
+
+    public User findByUserName(String userName) {
+        Connection connection = getConnection();
+        User user = null;
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"java-instagram\".\"USERS\" WHERE \"USERNAME\"=?");
+
+            ps.setString(1, userName);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                user = new User(
+                        rs.getInt("ID"),
+                        rs.getString("USERNAME"),
+                        rs.getString("EMAIL"),
+                        rs.getString("PASSWORD"),
+                        rs.getString("DESCRIPTION"),
+                        rs.getString("NAME"),
+                        rs.getString("PHONE_NUMBER"),
+                        rs.getInt("GENDER"),
+                        rs.getInt("TYPE"),
+                        rs.getString("PHOTO_URL")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return user;
+    }
+
+    public int update(User user) {
+        Connection connection = getConnection();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement("UPDATE \"java-instagram\".\"USERS\" SET EMAIL=?, PASSWORD=?, DESCRIPTION=?, NAME=?, PHONE_NUMBER=?, GENDER=?, TYPE=? WHERE USERNAME=?");
+
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getDescription());
+            ps.setString(4, user.getName());
+            ps.setString(5, user.getPhoneNumber());
+            ps.setInt(6, user.getGender());
+            ps.setInt(7, user.getType());
+            ps.setString(8, user.getUserName());
+
+            int result = ps.executeUpdate();
+
+            return result;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return 0;
+
     }
 
 

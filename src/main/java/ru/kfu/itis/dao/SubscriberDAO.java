@@ -16,7 +16,7 @@ public class SubscriberDAO extends AbstractDAO {
 
         Connection connection = getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".POSTS(SUBSCRIBER_ID, PERSON_ID, DATE) VALUES(?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(SUBSCRIBER_ID, PERSON_ID, DATE) VALUES(?,?,?)");
 
             ps.setInt(1, subscriber.getSubscriberId());
             ps.setInt(2, subscriber.getPersonId());

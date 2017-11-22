@@ -16,7 +16,7 @@ public class CommentDAO extends AbstractDAO {
 
         Connection connection = getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".POSTS(POST_ID, USER_ID, TEXT, DATE) VALUES(?,?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(POST_ID, USER_ID, TEXT, DATE) VALUES(?,?,?,?)");
 
             ps.setInt(1, comment.getPostId());
             ps.setInt(2, comment.getUserId());
