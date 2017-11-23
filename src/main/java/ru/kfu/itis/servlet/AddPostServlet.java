@@ -37,15 +37,17 @@ public class AddPostServlet extends HttpServlet {
 
         Part photoPart = req.getPart("photo");
         InputStream in = photoPart.getInputStream();
-        String userName = user.getUserName();
-        String path = System.getProperty("user.home") + "\\java-instagram\\" + userName + "\\";
-        System.out.println("path = " +path);
+        String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
+        String pathToFile = user.getUserName() + "\\posts\\" + photoPart.getSubmittedFileName();
+        //System.out.println("path = " +path);
+        /*File file = new File(path, photoPart.getSubmittedFileName());
+*/
         String imgType = (photoPart.getContentType().split("/")[1]);
-        File file = new File(path + userName + "_post_" + photoPart.getSubmittedFileName());
+        File file = new File(basicPath + pathToFile);
         File dir = file.getParentFile();
-        if(!file.exists())
+        if(false == file.exists())
         {
-            dir.mkdir();
+            dir.mkdirs();
         }
         file.createNewFile();
         OutputStream out = new FileOutputStream(file);
@@ -53,7 +55,8 @@ public class AddPostServlet extends HttpServlet {
         out.flush();
         out.close();
 
-        String photoUrl = file.getAbsolutePath();
+        System.out.println(pathToFile);
+        String photoUrl = pathToFile;
 
         Post post = new Post(
                 userId,

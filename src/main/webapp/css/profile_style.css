@@ -52,3 +52,27 @@ footer a {
 #copyright {
   float: right;
 }
+
+.ava{
+    max-height: 200px;
+    min-width: 200px;
+}
+
+.profile_header {
+    padding-bottom: 30px;
+    border-bottom: 3px solid white;
+}
+.profile_photo{
+    padding-left: 30px;
+}
+.photos {
+    margin-top:20px;
+}
+.profile_info {
+    padding: 20px;
+    margin-left: 30px;
+}
+.edit_profile {
+    margin-left: 50px;
+}
+

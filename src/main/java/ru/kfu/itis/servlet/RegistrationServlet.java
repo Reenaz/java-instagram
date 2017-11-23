@@ -78,16 +78,17 @@ public class RegistrationServlet  extends HttpServlet {
         }*/
 
         InputStream in = photoPart.getInputStream();
-        String path = System.getProperty("user.home") + "\\java-instagram\\" + userName + "\\";
-        System.out.println("path = " +path);
+        String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
+        String pathToFile = userName + "\\profile_photo\\" + photoPart.getSubmittedFileName();
+        //System.out.println("path = " +path);
         /*File file = new File(path, photoPart.getSubmittedFileName());
 */
         String imgType = (photoPart.getContentType().split("/")[1]);
-        File file = new File(path + userName + "_photo." + imgType);
+        File file = new File(basicPath + pathToFile);
         File dir = file.getParentFile();
         if(false == file.exists())
         {
-            dir.mkdir();
+            dir.mkdirs();
         }
         file.createNewFile();
         OutputStream out = new FileOutputStream(file);
@@ -95,7 +96,8 @@ public class RegistrationServlet  extends HttpServlet {
         out.flush();
         out.close();
 
-        String photoUrl = file.getAbsolutePath();
+        System.out.println(pathToFile);
+        String photoUrl = pathToFile;
 
 
         User user = new User(

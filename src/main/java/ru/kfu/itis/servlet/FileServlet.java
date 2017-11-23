@@ -24,7 +24,7 @@ public class FileServlet extends HttpServlet {
     public void init() throws ServletException {
 
         // Define base path somehow. You can define it as init-param of the servlet.
-        this.filePath = "";
+        this.filePath = System.getProperty("user.home") + "\\java-instagram\\media\\";
 
         // In a Windows environment with the Applicationserver running on the
         // c: volume, the above path is exactly the same as "c:\files".
