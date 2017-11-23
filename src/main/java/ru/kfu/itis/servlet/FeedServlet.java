@@ -1,10 +1,7 @@
 package ru.kfu.itis.servlet;
 
 import javafx.geometry.Pos;
-import ru.kfu.itis.dao.CommentDAO;
-import ru.kfu.itis.dao.PostDAO;
-import ru.kfu.itis.dao.SubscriberDAO;
-import ru.kfu.itis.dao.UserDAO;
+import ru.kfu.itis.dao.*;
 import ru.kfu.itis.entity.Comment;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
@@ -42,9 +39,18 @@ public class FeedServlet extends HttpServlet {
             CommentDAO commentDAO = new CommentDAO();
 
             Map<Integer, String> commentUserNameMap = new HashMap<>();
+            Map<Integer, String> likeMap = new HashMap<>();
 
             for(Post post : posts) {
                 List<Comment> comments = commentDAO.getCommentsByPostId(post.getId());
+
+                LikeDAO likeDAO = new LikeDAO();
+
+                if(likeDAO.get(user.getId(), post.getId()) != null) {
+                    likeMap.put(post.getId(), "like");
+                } else {
+                    likeMap.put(post.getId(), "unlike");
+                }
 
                 for(Comment comment : comments) {
                     commentUserNameMap.put(comment.getId(), userDAO.get(comment.getUserId()).getUserName());
@@ -53,6 +59,8 @@ public class FeedServlet extends HttpServlet {
                 post.setComments(comments);
             }
 
+
+            req.setAttribute("likeMap", likeMap);
             req.setAttribute("commentUserNameMap", commentUserNameMap);
             req.setAttribute("user", user);
             req.setAttribute("posts", posts);

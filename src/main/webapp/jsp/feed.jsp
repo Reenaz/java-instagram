@@ -61,8 +61,10 @@
                             <img src="file/${post.getPhoto()}" class="img-responsive">
                         </div>
                         <div class="post_info col-md-12">
+                            <c:if test="${likeMap.get(post.getId()) == 'unlike'}"><a href="like?postId=${post.getId()}&action=add"><img src="https://avatanplus.com/files/resources/original/57487beed2bb4154f3241d0f.png" class="img-responsive post_like_icon"></a></c:if>
 
-                            <img src="https://avatanplus.com/files/resources/original/57487beed2bb4154f3241d0f.png" class="img-responsive post_like_icon">
+                            <c:if test="${likeMap.get(post.getId()) == 'like'}"><a href="like?postId=${post.getId()}&action=delete"><img src="http://walljozz.com/images/instagram-heart-png-18.jpg" class="img-responsive post_like_icon"></a></c:if>
+
                             <p class="likes_count">${post.getLikesCount()}<strong> отметок "Нравится"</strong></p>
                             <p><strong>${user.getUserName()}: </strong>Это я</p>
                             <p class="post_date">${post.getDate()}</p>

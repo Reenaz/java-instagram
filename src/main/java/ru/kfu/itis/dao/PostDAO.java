@@ -42,6 +42,38 @@ public class PostDAO extends AbstractDAO {
         return postId;
     }
 
+    public Post get(int postId) {
+        Connection connection = getConnection();
+        Post post = null;
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"java-instagram\".\"POSTS\" WHERE \"ID\"=?");
+
+            ps.setInt(1, postId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                post = new Post(
+                        rs.getInt("ID"),
+                        rs.getInt("USER_ID"),
+                        rs.getString("PHOTO_URL"),
+                        rs.getString("DESCRIPTION"),
+                        rs.getString("LOCATION"),
+                        rs.getDate("DATE"),
+                        rs.getInt("LIKES_COUNT")
+                );
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return post;
+    }
+
     public List<Post> findByUserId(int id) {
         Connection connection = getConnection();
         List<Post> posts = new LinkedList<Post>();
@@ -110,6 +142,28 @@ public class PostDAO extends AbstractDAO {
         }
 
         return posts;
+    }
+
+    public int updateLikesCoung(int postID , int coint) {
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE \"java-instagram\".\"POSTS\" SET \"LIKES_COUNT\"=? WHERE \"ID\"=? ");
+            //Array array = connection.createArrayOf("Integer", userIdList.toArray());
+            ps.setInt(1, coint);
+            ps.setInt(2, postID);
+
+            int result = ps.executeUpdate();
+
+            return result;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return 0;
     }
 
 
