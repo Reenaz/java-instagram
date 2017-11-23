@@ -43,12 +43,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarcontent">
             <ul class="nav navbar-nav">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/add">Upload </a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="feed">Лента</a></li>
+                <li><a href="add">Загрузить фото</a></li>
+                <li><a href="profile">Профиль</a></li>
+                <li><a href="logout">Выход</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -63,7 +65,7 @@
 
             </div>
             <div class="col-lg-7 profile_info">
-                <p><h2>Reenaz<a src="edit" class="btn btn-default edit_profile">Редактировать профиль</a></h2></p>
+                <p><h2>Reenaz<a href="edit" class="btn btn-default edit_profile">Редактировать профиль</a></h2></p>
                 <ul class="list-inline">
                     <li><h4><strong>${countOfPosts}</strong> публикаций</h4></li>
                     <li><h4><strong>${subscribersCount}</strong> подписчиков</h4><li>
@@ -80,70 +82,29 @@
 
 
     <div class="row">
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/2PODhmrvLik">
+        <c:forEach items="${posts}" var="post">
+            <div class="col-lg-4 col-sm-6 ">
+                <div class="thumbnail">
+                    <img src="file/${post.getPhoto()}">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/jMd3WS9LBcc">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/AdfaEuotl_Q">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/AsahNlC0VhQ">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/mXQyEcINwa8">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/sf4ihZObGOY">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/Kwi60PbAM9I">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/bQxGg8Vx1Vc">
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 ">
-            <div class="thumbnail">
-                <img src="https://source.unsplash.com/PFxSKx4kc5U">
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 
 <footer><div class="container-fluid">
     <div class="row">
         <div class="col-sm-12" id="footer">
-            <a href='#'>ABOUT US</a>
-            <a href='#'>SUPPORT</a>
-            <a href='#'>BLOG</a>
-            <a href='#'>PRESS</a>
+            <a href='#'>ПОДДЕРЖКА</a>
+            <a href='#'>БЛОГ</a>
             <a href='#'>API</a>
-            <a href='#'>JOBS</a>
-            <a href='#'>PRIVACY</a>
-            <a href='#'>TERMS</a>
-            <a href='#'>DIRECTORY</a>
-            <a href='#'>LANGUAGE</a>
+            <a href='#'>ВАКАНСИИ</a>
+            <a href='#'>ПРАВА</a>
+            <a href='#'>УСЛОВИЯ</a>
             <span id='copyright'>© 2017 INSTAGRAM</span>
         </div>
     </div>
+</div>
 </footer>
 
 

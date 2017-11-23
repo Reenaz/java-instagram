@@ -28,7 +28,7 @@ public class ProfileServlet extends HttpServlet {
 
         req.setAttribute("user", user);
         req.setAttribute("userName", user.getUserName());
-        if (!posts.isEmpty()) req.setAttribute("userPost", posts.get(0));
+        if (!posts.isEmpty()) req.setAttribute("posts", posts);
         req.setAttribute("countOfPosts", posts.size());
         req.setAttribute("subscribersCount", countOfSubscribers);
         req.setAttribute("countOfSignPerson", countOfSigningPerson);
