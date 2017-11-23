@@ -7,9 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class LikeDAO extends AbstractDAO {
 
     public int add(Like like){

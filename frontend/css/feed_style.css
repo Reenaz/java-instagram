@@ -87,3 +87,28 @@ main {
   font-size: 12px;
 }
 
+.comments{
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efefef;;
+}
+
+.textarea {
+  padding-left: 0;
+  padding-right: 0;
+}
+.send_btn_div {
+  padding-right: 0;
+
+}
+.send_btn {
+  border:none;
+}
+.send_btn:hover {
+  background-color: white;
+  border:none;
+}
+.text_form {
+  border:none;
+  text-decoration: none;
+}
+

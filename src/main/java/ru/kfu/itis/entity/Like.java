@@ -1,8 +1,5 @@
 package ru.kfu.itis.entity;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class Like {
     private int id;
     private int postId;

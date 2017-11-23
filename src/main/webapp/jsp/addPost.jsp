@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: siraziev.r
-  Date: 17.11.2017
-  Time: 17:06
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -20,6 +14,7 @@
 </head>
 <body>
 
+!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,12 +31,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarcontent">
             <ul class="nav navbar-nav">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Upload</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="feed">Лента</a></li>
+                <li><a href="add">Загрузить фото</a></li>
+                <li><a href="profile">Профиль</a></li>
+                <li><a href="logout">Выход</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -92,20 +89,17 @@
 <footer><div class="container-fluid">
     <div class="row">
         <div class="col-sm-12" id="footer">
-            <a href='#'>ABOUT US</a>
-            <a href='#'>SUPPORT</a>
-            <a href='#'>BLOG</a>
-            <a href='#'>PRESS</a>
+            <a href='#'>ПОДДЕРЖКА</a>
+            <a href='#'>БЛОГ</a>
             <a href='#'>API</a>
-            <a href='#'>JOBS</a>
-            <a href='#'>PRIVACY</a>
-            <a href='#'>TERMS</a>
-            <a href='#'>DIRECTORY</a>
-            <a href='#'>LANGUAGE</a>
+            <a href='#'>ВАКАНСИИ</a>
+            <a href='#'>ПРАВА</a>
+            <a href='#'>УСЛОВИЯ</a>
             <span id='copyright'>© 2017 INSTAGRAM</span>
         </div>
     </div>
 </div>
 </footer>
+
 
 </body>

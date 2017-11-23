@@ -2,9 +2,7 @@ package ru.kfu.itis.entity;
 
 import java.sql.Date;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
+
 public class Comment {
     private int id;
     private int postId;

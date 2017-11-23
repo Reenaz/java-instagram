@@ -5,9 +5,6 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.util.Arrays;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class User {
     private int id;
     private String userName;

@@ -12,9 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
+
 public class UserDAO extends AbstractDAO{
 
     public int add(User user) {
@@ -150,22 +148,18 @@ public class UserDAO extends AbstractDAO{
 
     }
 
-    public Map<Integer, String> getProfilePhotosOfUserList(List<Integer> userList) {
-        Map<Integer, String> photoUrlMap = new HashMap<>();
+    public String getProfilePhotoById(int userId) {
         String photoUrl = null;
-        int id = 0;
         Connection connection = getConnection();
 
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT ID, PHOTO_URL  FROM \"java-instagram\".\"USERS\" WHERE \"ID\" IN(?) ");
-            Array array = connection.createArrayOf("integer", userList.toArray());
-            ps.setArray(1, array);
+            PreparedStatement ps = connection.prepareStatement("SELECT \"PHOTO_URL\"  FROM \"java-instagram\".\"USERS\" WHERE \"ID\"=? ");
+
+            ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
-                id = rs.getInt("ID");
                 photoUrl = rs.getString("PHOTO_URL");
-                photoUrlMap.put(id, photoUrl);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -173,7 +167,7 @@ public class UserDAO extends AbstractDAO{
             closeConnection();
         }
 
-        return photoUrlMap;
+        return photoUrl;
     }
 
 

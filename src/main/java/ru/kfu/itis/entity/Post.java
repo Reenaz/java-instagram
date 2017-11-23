@@ -2,10 +2,8 @@ package ru.kfu.itis.entity;
 
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.List;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class Post {
     private int id;
     private int userId;
@@ -13,25 +11,31 @@ public class Post {
     private String description;
     private String location;
     private Date date;
+    public int likesCount;
+    private List<Comment> comments;
 
     public Post() {
     }
 
-    public Post(int userId, String photo, String description, String location, Date date) {
-        this.userId = userId;
-        this.photo = photo;
-        this.description = description;
-        this.location = location;
-        this.date = date;
-    }
-
-    public Post(int id, int userId, String photo, String description, String location, Date date) {
+    public Post(int id, int userId, String photo, String description, String location, Date date, int likesCount) {
         this.id = id;
         this.userId = userId;
         this.photo = photo;
         this.description = description;
         this.location = location;
         this.date = date;
+        this.likesCount = likesCount;
+    }
+
+    public Post(int id, int userId, String photo, String description, String location, Date date, int likesCount, List<Comment> comments) {
+        this.id = id;
+        this.userId = userId;
+        this.photo = photo;
+        this.description = description;
+        this.location = location;
+        this.date = date;
+        this.likesCount = likesCount;
+        this.comments = comments;
     }
 
     public int getId() {
@@ -80,5 +84,32 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Post(int userId, String photo, String description, String location, Date date, int likesCount) {
+        this.userId = userId;
+        this.photo = photo;
+        this.description = description;
+        this.location = location;
+        this.date = date;
+        this.likesCount = likesCount;
+
+
     }
 }

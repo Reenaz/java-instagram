@@ -36,6 +36,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>ru.kfu.itis.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubscribeSevlet</servlet-name>
+        <servlet-class>ru.kfu.itis.servlet.SubscribeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>ru.kfu.itis.servlet.CommentServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -69,6 +77,11 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubscribeSevlet</servlet-name>
+        <url-pattern>/subscribe/*</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet>
         <servlet-name>fileServlet</servlet-name>
@@ -77,6 +90,10 @@
     <servlet-mapping>
         <servlet-name>fileServlet</servlet-name>
         <url-pattern>/file/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/comment/*</url-pattern>
     </servlet-mapping>
 
     <mime-mapping>

@@ -19,9 +19,6 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Reenaz on 15.11.2017.
- */
 
 @MultipartConfig
 public class RegistrationServlet  extends HttpServlet {

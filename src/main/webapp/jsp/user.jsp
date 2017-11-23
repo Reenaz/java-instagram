@@ -1,20 +1,7 @@
-<%@ page import="ru.kfu.itis.entity.User" %><%--
-  Created by IntelliJ IDEA.
-  User: siraziev.r
-  Date: 17.11.2017
-  Time: 17:05
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="ru.kfu.itis.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: siraziev.r
-  Date: 17.11.2017
-  Time: 17:05
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +52,12 @@
 
             </div>
             <div class="col-lg-7 profile_info">
-                <p><h2>Reenaz<a href="edit" class="btn btn-default edit_profile">Редактировать профиль</a></h2></p>
+                <c:if test="${isSubscribed == 'true'}">
+                    <p><h2>${user.getUserName()}<a href="subscribe?userName=${user.getUserName()}&action=delete" class="btn btn-default edit_profile">Отписаться</a></h2>
+                </c:if>
+                <c:if test="${isSubscribed == 'false'}">
+                    <p><h2>${user.getUserName()}<a href="subscribe?userName=${user.getUserName()}&action=add" class="btn btn-default edit_profile">Подписаться</a></h2>
+                </c:if>
                 <ul class="list-inline">
                     <li><h4><strong>${countOfPosts}</strong> публикаций</h4></li>
                     <li><h4><strong>${subscribersCount}</strong> подписчиков</h4><li>
@@ -82,7 +74,7 @@
 
     <%! String accessTrue  = "true"; %>
     <div class="row">
-        <c:if test= "${access == accessTrue}">
+        <c:if test="${access == 'true'}">
             <c:forEach items="${posts}" var="post">
                 <div class="col-lg-4 col-sm-6 ">
                     <div class="thumbnail">

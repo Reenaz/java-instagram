@@ -3,9 +3,6 @@ package ru.kfu.itis.util;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class PropertiesUtil {
     private static Properties dbProperties;
 

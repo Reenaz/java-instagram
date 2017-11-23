@@ -5,9 +5,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-/**
- * Created by Reenaz on 16.11.2017.
- */
 public class CustomRollingCalendar extends GregorianCalendar{
     private static final long serialVersionUID = -3560331770601814177L;
     int type = -1;

@@ -1,8 +1,11 @@
 package ru.kfu.itis.servlet;
 
+import javafx.geometry.Pos;
+import ru.kfu.itis.dao.CommentDAO;
 import ru.kfu.itis.dao.PostDAO;
 import ru.kfu.itis.dao.SubscriberDAO;
 import ru.kfu.itis.dao.UserDAO;
+import ru.kfu.itis.entity.Comment;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
 
@@ -12,12 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * Created by Reenaz on 16.11.2017.
- */
 public class FeedServlet extends HttpServlet {
 
     @Override
@@ -31,14 +30,33 @@ public class FeedServlet extends HttpServlet {
             List<Integer> personIdList = subscriberDAO.getAllPersonIdOfSub(user.getId());
             personIdList.add(user.getId());
 
+            List<Post> posts = new LinkedList<>();
+            Map<Integer, User> users = new HashMap<>();
+
             PostDAO postDAO = new PostDAO();
-            List<Post> posts = postDAO.getAllPostsByUserIdList(personIdList);
+            for(int userId : personIdList) {
+                posts.addAll(postDAO.getAllPostsByUserId(userId));
+                users.put(userId, userDAO.get(userId));
+            }
 
-            Map<Integer, String> photoUrlMap= userDAO.getProfilePhotosOfUserList(personIdList);
+            CommentDAO commentDAO = new CommentDAO();
 
+            Map<Integer, String> commentUserNameMap = new HashMap<>();
+
+            for(Post post : posts) {
+                List<Comment> comments = commentDAO.getCommentsByPostId(post.getId());
+
+                for(Comment comment : comments) {
+                    commentUserNameMap.put(comment.getId(), userDAO.get(comment.getUserId()).getUserName());
+                }
+
+                post.setComments(comments);
+            }
+
+            req.setAttribute("commentUserNameMap", commentUserNameMap);
             req.setAttribute("user", user);
             req.setAttribute("posts", posts);
-            req.setAttribute("photos", photoUrlMap );
+            req.setAttribute("users", users );
             req.getRequestDispatcher("jsp/feed.jsp").forward(req, resp);
         } else {
             resp.sendRedirect("/");

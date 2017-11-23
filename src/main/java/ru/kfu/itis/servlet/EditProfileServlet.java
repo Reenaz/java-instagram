@@ -18,9 +18,6 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Reenaz on 16.11.2017.
- */
 
 @MultipartConfig
 public class EditProfileServlet extends HttpServlet {

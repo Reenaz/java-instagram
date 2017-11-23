@@ -6,9 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class DBUtil {
     private static DataSource dataSource;
 

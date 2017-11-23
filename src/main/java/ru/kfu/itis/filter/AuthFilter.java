@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by Reenaz on 15.11.2017.
- */
+
 public class AuthFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

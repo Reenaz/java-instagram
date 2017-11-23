@@ -7,9 +7,6 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Reenaz on 13.11.2017.
- */
 public class PostDAO extends AbstractDAO {
 
     public int add(Post post){
@@ -17,12 +14,13 @@ public class PostDAO extends AbstractDAO {
         int postId = -1;
 
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(\"USER_ID\", \"PHOTO_URL\", \"DESCRIPTION\", \"LOCATION\", \"DATE\") VALUES(?,?,?,?, current_timestamp)", new String[]{"ID"});
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(\"USER_ID\", \"PHOTO_URL\", \"DESCRIPTION\", \"LOCATION\", \"DATE\", \"LIKES_COUNT\") VALUES(?,?,?,?, current_timestamp,?)", new String[]{"ID"});
 
             ps.setInt(1, post.getUserId());
             ps.setString(2, post.getPhoto());
             ps.setString(3, post.getDescription());
             ps.setString(4, post.getLocation());
+            ps.setInt(5, post.getLikesCount());
 
 
             ps.executeUpdate();
@@ -63,7 +61,8 @@ public class PostDAO extends AbstractDAO {
                         rs.getString("PHOTO_URL"),
                         rs.getString("DESCRIPTION"),
                         rs.getString("LOCATION"),
-                        rs.getDate("DATE")
+                        rs.getDate("DATE"),
+                        rs.getInt("LIKES_COUNT")
                 );
 
                 posts.add(post);
@@ -77,27 +76,32 @@ public class PostDAO extends AbstractDAO {
         return posts;
     }
 
-    public List<Post> getAllPostsByUserIdList(List<Integer> userIdList) {
+    public List<Post> getAllPostsByUserId(int userId) {
         List<Post> posts = new LinkedList<>();
         Post post = null;
         Connection connection = getConnection();
 
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT *  FROM \"java-instagram\".\"POSTS\" WHERE \"USER_ID\" IN(?) ORDER BY \"DATE\" DESC LIMIT 10");
-            Array array = connection.createArrayOf("Integer", userIdList.toArray());
-            ps.setArray(1, array);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"java-instagram\".\"POSTS\" WHERE \"USER_ID\"=? ");
+            //Array array = connection.createArrayOf("Integer", userIdList.toArray());
+            ps.setInt(1, userId);
+
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
+                System.out.println(rs);
                 post = new Post(
-                        rs.getInt("POST_ID"),
+                        rs.getInt("ID"),
                         rs.getInt("USER_ID"),
                         rs.getString("PHOTO_URL"),
                         rs.getString("DESCRIPTION"),
                         rs.getString("LOCATION"),
-                        rs.getDate("DATE")
+                        rs.getDate("DATE"),
+                        rs.getInt("LIKES_COUNT")
                 );
                 posts.add(post);
+
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -87,3 +87,122 @@ main {
   font-size: 12px;
 }
 
+html{
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 70px !important;// значение высоты #footer
+}
+.navbar-inverse{
+  background-color: #2c3e50;
+  color: white;
+}
+.navbar-inverse .navbar-nav>li>a{
+  color: white;
+}
+.navbar-inverse .navbar-header .navbar-brand{
+  color: white;
+}
+.img_title{
+  max-width:100px;
+}
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+  clear: both;
+  text-align: left;
+  color: white;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: 700;
+  background-color: #2c3e50;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+}
+
+footer a {
+  color: white;
+  padding: 5px;
+}
+
+main {
+  margin-top: 70px;
+}
+
+
+#copyright {
+  float: right;
+}
+
+.post{
+  border: 1px solid #efefef;
+  margin-top: 50px;
+}
+.post_image{
+  padding: 20px 20px 10px 20px;
+}
+.post_like_icon{
+  display: inline-block;
+  max-width: 40px;
+}
+.likes_count{
+  padding-bottom: 0;
+}
+.post_header {
+  border-bottom: 1px solid #efefef;
+  padding: 10px 10px 0px 10px;
+}
+.post_header p {
+  vertical-align: center;
+}
+.ava {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.post_likes{
+  border-bottom: 1px solid #efefef;
+}
+.post_description{
+  padding-left: 10px;
+}
+.post_date {
+  color: #999;
+  font-size: 12px;
+}
+
+.comments{
+  margin-bottom: 5px;
+  border-bottom: 1px solid #efefef;
+  word-wrap: break-word;
+}
+
+.textarea {
+  padding-left: 0;
+  padding-right: 0;
+}
+.send_btn_div {
+  padding-right: 0;
+
+}
+.send_btn {
+  border:none;
+}
+.send_btn:hover {
+  background-color: white;
+  border:none;
+}
+.text_form {
+  border:none;
+  text-decoration: none;
+}
+
+.del_comment{
+  float: right;
+}
+

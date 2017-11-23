@@ -18,13 +18,11 @@ import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
 
-/**
- * Created by Reenaz on 16.11.2017.
- */
 @MultipartConfig
 public class AddPostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("/jsp/addPost.jsp").forward(req, resp);
     }
 
@@ -64,7 +62,8 @@ public class AddPostServlet extends HttpServlet {
                 photoUrl,
                 description,
                 location,
-                null
+                null,
+                0
         );
 
         PostDAO postDAO = new PostDAO();
