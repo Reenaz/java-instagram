@@ -1,14 +1,16 @@
 package ru.kfu.itis.dao;
 
+import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.ConnectException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Reenaz on 13.11.2017.
@@ -146,6 +148,32 @@ public class UserDAO extends AbstractDAO{
 
         return 0;
 
+    }
+
+    public Map<Integer, String> getProfilePhotosOfUserList(List<Integer> userList) {
+        Map<Integer, String> photoUrlMap = new HashMap<>();
+        String photoUrl = null;
+        int id = 0;
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT ID, PHOTO_URL  FROM \"java-instagram\".\"USERS\" WHERE \"ID\" IN(?) ");
+            Array array = connection.createArrayOf("integer", userList.toArray());
+            ps.setArray(1, array);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                id = rs.getInt("ID");
+                photoUrl = rs.getString("PHOTO_URL");
+                photoUrlMap.put(id, photoUrl);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return photoUrlMap;
     }
 
 

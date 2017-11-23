@@ -84,7 +84,7 @@ public class PostDAO extends AbstractDAO {
 
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT *  FROM \"java-instagram\".\"POSTS\" WHERE \"USER_ID\" IN(?) ORDER BY \"DATE\" DESC LIMIT 10");
-            Array array = connection.createArrayOf("integer", userIdList.toArray());
+            Array array = connection.createArrayOf("Integer", userIdList.toArray());
             ps.setArray(1, array);
             ResultSet rs = ps.executeQuery();
 
