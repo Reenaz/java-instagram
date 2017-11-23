@@ -25,19 +25,19 @@ public class UserProfileServlet extends HttpServlet {
             String userName = req.getParameter("userName");
             User user = userDAO.findByUserName(userName);
 
-            if(user != null) {
-                PostDAO postDAO = new PostDAO();
-                List<Post> posts = postDAO.findByUserId(user.getId());
+            if(user.equals(authUser)) {
+                resp.sendRedirect("/profile");
+            } else {
+                    PostDAO postDAO = new PostDAO();
+                    List<Post> posts = postDAO.findByUserId(user.getId());
 
-                req.setAttribute("user", user);
-                req.setAttribute("posts", posts);
-                req.setAttribute("access", "true");
+                    req.setAttribute("user", user);
+                    req.setAttribute("posts", posts);
+                    req.setAttribute("access", "true");
 
-                req.getRequestDispatcher("/jsp/user.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/jsp/user.jsp").forward(req, resp);
             }
         }
-
-
     }
 
 

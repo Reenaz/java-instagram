@@ -15,6 +15,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 import java.io.*;
 import java.sql.Blob;
+import java.sql.Date;
 import java.sql.SQLException;
 
 /**
@@ -62,7 +63,8 @@ public class AddPostServlet extends HttpServlet {
                 userId,
                 photoUrl,
                 description,
-                location
+                location,
+                null
         );
 
         PostDAO postDAO = new PostDAO();

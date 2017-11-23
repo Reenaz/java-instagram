@@ -59,7 +59,7 @@ public class FileServlet extends HttpServlet {
         // Get content type by filename.
         String contentType = getServletContext().getMimeType(file.getName());
 
-        System.out.println(contentType);
+
 
         // If content type is unknown, then set the default value.
         // For all content types, see: http://www.w3schools.com/media/media_mimeref.asp

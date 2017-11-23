@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Reenaz on 13.11.2017.
@@ -83,4 +85,28 @@ public class SubscriberDAO extends AbstractDAO {
         return count;
     }
 
+    public List<Integer> getAllPersonIdOfSub(int userId) {
+        List<Integer> personIdList = new LinkedList<>();
+        Integer personId;
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT \"PERSON_ID\" FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"SUBSCRIBER_ID\" = ? ");
+
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                personId = rs.getInt("PERSON_ID");
+                personIdList.add(personId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return personIdList;
+    }
 }

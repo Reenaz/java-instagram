@@ -1,6 +1,7 @@
 package ru.kfu.itis.entity;
 
 import java.sql.Blob;
+import java.sql.Date;
 
 /**
  * Created by Reenaz on 13.11.2017.
@@ -11,23 +12,26 @@ public class Post {
     private String photo;
     private String description;
     private String location;
+    private Date date;
 
     public Post() {
     }
 
-    public Post(int id, int userId, String photo, String description, String location) {
+    public Post(int userId, String photo, String description, String location, Date date) {
+        this.userId = userId;
+        this.photo = photo;
+        this.description = description;
+        this.location = location;
+        this.date = date;
+    }
+
+    public Post(int id, int userId, String photo, String description, String location, Date date) {
         this.id = id;
         this.userId = userId;
         this.photo = photo;
         this.description = description;
         this.location = location;
-    }
-
-    public Post(int userId, String photo, String description, String location) {
-        this.userId = userId;
-        this.photo = photo;
-        this.description = description;
-        this.location = location;
+        this.date = date;
     }
 
     public int getId() {
@@ -70,14 +74,11 @@ public class Post {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", photo='" + photo + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                '}';
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

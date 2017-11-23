@@ -122,7 +122,7 @@ public class UserDAO extends AbstractDAO{
         Connection connection = getConnection();
 
         try{
-            PreparedStatement ps = connection.prepareStatement("UPDATE \"java-instagram\".\"USERS\" SET EMAIL=?, PASSWORD=?, DESCRIPTION=?, NAME=?, PHONE_NUMBER=?, GENDER=?, TYPE=? WHERE USERNAME=?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE \"java-instagram\".\"USERS\" SET \"EMAIL\"=?, \"PASSWORD\"=?, \"DESCRIPTION\"=?, \"NAME\"=?, \"PHONE_NUMBER\"=?, \"GENDER\"=?, \"TYPE\"=? , \"PHOTO_URL\"=? WHERE \"USERNAME\"=?");
 
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
@@ -131,7 +131,8 @@ public class UserDAO extends AbstractDAO{
             ps.setString(5, user.getPhoneNumber());
             ps.setInt(6, user.getGender());
             ps.setInt(7, user.getType());
-            ps.setString(8, user.getUserName());
+            ps.setString(8, user.getPhoto());
+            ps.setString(9, user.getUserName());
 
             int result = ps.executeUpdate();
 

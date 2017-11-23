@@ -67,37 +67,25 @@ public class RegistrationServlet  extends HttpServlet {
         String phoneNumber = getStringFromReqPart(req.getPart("phoneNumber"));
 
         Part photoPart = req.getPart("data");
-       /* ByteArrayInputStream input = null;
-        if (photoPart != null) {
-            photo = photoPart.getInputStream();
-            byte[] bytesFromInputStream = getBytesFromInputStream(photo);
-            input = new ByteArrayInputStream(bytesFromInputStream);
-            System.out.println(photo.toString());
-        } else{
-            System.out.println("photo is null");
-        }*/
+        String photoUrl = "";
+        if(!photoPart.getSubmittedFileName().equals("")) {
+            InputStream in = photoPart.getInputStream();
+            String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
+            String pathToFile = userName + "\\profile_photo\\" + photoPart.getSubmittedFileName();
+            File file = new File(basicPath + pathToFile);
+            File dir = file.getParentFile();
+            if(false == file.exists())
+            {
+                dir.mkdirs();
+            }
+            file.createNewFile();
+            OutputStream out = new FileOutputStream(file);
+            IOUtils.copy(in, out); //The function is below
+            out.flush();
+            out.close();
 
-        InputStream in = photoPart.getInputStream();
-        String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
-        String pathToFile = userName + "\\profile_photo\\" + photoPart.getSubmittedFileName();
-        //System.out.println("path = " +path);
-        /*File file = new File(path, photoPart.getSubmittedFileName());
-*/
-        String imgType = (photoPart.getContentType().split("/")[1]);
-        File file = new File(basicPath + pathToFile);
-        File dir = file.getParentFile();
-        if(false == file.exists())
-        {
-            dir.mkdirs();
+            photoUrl = pathToFile;
         }
-        file.createNewFile();
-        OutputStream out = new FileOutputStream(file);
-        IOUtils.copy(in, out); //The function is below
-        out.flush();
-        out.close();
-
-        System.out.println(pathToFile);
-        String photoUrl = pathToFile;
 
 
         User user = new User(
