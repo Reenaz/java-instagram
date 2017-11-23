@@ -5,6 +5,7 @@ import ru.kfu.itis.entity.Subscriber;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -16,7 +17,7 @@ public class SubscriberDAO extends AbstractDAO {
 
         Connection connection = getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"POSTS\"(SUBSCRIBER_ID, PERSON_ID, DATE) VALUES(?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"SUBSCRIBERS\" (\"SUBSCRIBER_ID\", \"PERSON_ID\", \"DATE\") VALUES(?,?,?)");
 
             ps.setInt(1, subscriber.getSubscriberId());
             ps.setInt(2, subscriber.getPersonId());
@@ -34,6 +35,52 @@ public class SubscriberDAO extends AbstractDAO {
         }
 
         return 0;
+    }
+
+    public int getCountOfSubscribers(int userId) {
+        int count = 0;
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(DISTINCT \"PERSON_ID\") AS COUNT FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"PERSON_ID\" = ? ");
+
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                count = rs.getInt("COUNT");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return count;
+    }
+
+    public int getCountOfPersonToSub( int userId) {
+        int count = 0;
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(DISTINCT \"PERSON_ID\") AS COUNT FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"SUBSCRIBER_ID\" = ? ");
+
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                count = rs.getInt("COUNT");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return count;
     }
 
 }

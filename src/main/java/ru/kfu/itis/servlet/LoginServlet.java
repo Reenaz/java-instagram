@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         if( user != null && userDAO.get(user.getId()).equals(user)) {
             resp.sendRedirect("/profile");
         } else {
-            req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
         }
 
 

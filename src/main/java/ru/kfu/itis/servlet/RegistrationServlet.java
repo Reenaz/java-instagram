@@ -51,7 +51,7 @@ public class RegistrationServlet  extends HttpServlet {
         if( user != null && userDAO.get(user.getId()).equals(user)) {
             resp.sendRedirect("/profile");
         } else {
-            req.getRequestDispatcher("/WEB-INF/jsp/reg.jsp").forward(req, resp);
+            req.getRequestDispatcher("jsp/reg.jsp").forward(req, resp);
         }
     }
 
@@ -118,10 +118,6 @@ public class RegistrationServlet  extends HttpServlet {
 
         resp.getWriter().print("Successful registration!");
         req.getRequestDispatcher("/").forward(req, resp);
-
-    }
-
-    public static void saveImgToFIle(InputStream imgStream) {
 
     }
 

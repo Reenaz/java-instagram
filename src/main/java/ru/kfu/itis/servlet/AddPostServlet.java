@@ -24,7 +24,7 @@ import java.sql.SQLException;
 public class AddPostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/addPost.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/addPost.jsp").forward(req, resp);
     }
 
     @Override

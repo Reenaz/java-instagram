@@ -1,0 +1,27 @@
+.post{
+	border: 1px solid #efefef;
+	margin-top: 50px;
+}
+.post_image{
+	padding: 20px 20px 10px 20px;
+}
+.img_like{
+	display: inline-block;
+	max-width: 40px;
+}
+.likes_count{
+	padding-bottom: 0;
+}
+.post_header {
+	border-bottom: 1px solid #efefef;
+	padding: 10px;
+}
+.post_header p {
+	vertical-align: center;
+}
+.post_likes{
+	border-bottom: 1px solid #efefef;
+}
+.post_description{
+	padding-left: 10px;
+}
