@@ -124,7 +124,6 @@ public class PostDAO extends AbstractDAO {
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
-                System.out.println(rs);
                 post = new Post(
                         rs.getInt("ID"),
                         rs.getInt("USER_ID"),
@@ -152,7 +151,7 @@ public class PostDAO extends AbstractDAO {
 
         try {
             PreparedStatement ps = connection.prepareStatement("UPDATE \"java-instagram\".\"POSTS\" SET \"LIKES_COUNT\"=? WHERE \"ID\"=? ");
-            //Array array = connection.createArrayOf("Integer", userIdList.toArray());
+
             ps.setInt(1, coint);
             ps.setInt(2, postID);
 

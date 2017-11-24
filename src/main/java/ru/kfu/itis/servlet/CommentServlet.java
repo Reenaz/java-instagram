@@ -43,14 +43,15 @@ public class CommentServlet extends HttpServlet {
             String commentTxt = req.getParameter("comment");
             int postId = Integer.parseInt(req.getParameter("postId"));
 
-
-            CommentDAO commentDAO = new CommentDAO();
-            commentDAO.add(new Comment(
-                    postId,
-                    sessionUser.getId(),
-                    commentTxt,
-                    null
-            ));
+            if(commentTxt != null && !commentTxt.trim().equals("") ) {
+                CommentDAO commentDAO = new CommentDAO();
+                commentDAO.add(new Comment(
+                        postId,
+                        sessionUser.getId(),
+                        commentTxt,
+                        null
+                ));
+            }
 
             resp.sendRedirect("/feed#" + postId);
 

@@ -1,6 +1,6 @@
 <%@ page import="ru.kfu.itis.entity.User" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -31,8 +31,8 @@
 
         <div class="collapse navbar-collapse" id="navbarcontent">
             <ul class="nav navbar-nav">
-                <li><a href="#">Рћ РЅР°СЃ</a></li>
-                <li><a href="#">РљРѕРЅС‚Р°РєС‚С‹</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
         </div>
     </div>
@@ -46,12 +46,12 @@
                     <fieldset>
 
                         <div class="form-group">
-                            <label for="userName"><span class="req">* </span> Р›РѕРіРёРЅ: </label>
+                            <label for="userName"><span class="req">* </span> Логин: </label>
                             <input required type="text" name="userName" id="userName" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" />
                         </div>
 
                         <div class="form-group">
-                            <label for="phoneNumber"><span class="req">* </span> РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: </label>
+                            <label for="phoneNumber"><span class="req">* </span> Номер телефона: </label>
                             <input class="form-control" type="text" name="phoneNumber" id = "phoneNumber" onkeyup = "Validate(this)" required />
                         </div>
 
@@ -61,42 +61,42 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name"><span class="req">* </span> РРјСЏ: </label>
+                            <label for="name"><span class="req">* </span> Имя: </label>
                             <input class="form-control" required type="text" name="name" id = "name"  onchange="email_validate(this.value);" />
                         </div>
 
                         <div class="form-group">
-                            <label for="description"><span class="req">* </span> Рћ СЃРµР±Рµ:   </label>
+                            <label for="description"><span class="req">* </span> О себе:   </label>
                             <input class="form-control" type="text" name="description" id = "description" onkeyup = "Validate(this)" />
                         </div>
 
                         <div class="form-group">
-                            <label for="password"><span class="req">* </span> РџР°СЂРѕР»СЊ: </label>
+                            <label for="password"><span class="req">* </span> Пароль: </label>
                             <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="password" />
 
-                            <label for="confirm_password"><span class="req">* </span> РџРѕРІС‚РѕСЂ РїР°СЂРѕР»СЏ: </label>
+                            <label for="confirm_password"><span class="req">* </span> Повтор пароля: </label>
                             <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="confirm_password" />
                         </div>
                         <div class="form-group">
-                            <label for="gender">Р’Р°С€ РїРѕР»:</label>
+                            <label for="gender">Ваш пол:</label>
                             <fieldset class="choose_set" name="gender" id="gender">
-                                <label><input type="radio" name="gender"  value="1" checked> РјСѓР¶СЃРєРѕР№ </label>
-                                <label><input type="radio" name="gender" value="2"> Р¶РµРЅСЃРєРёР№ </label>
+                                <label><input type="radio" name="gender"  value="1" checked> мужской </label>
+                                <label><input type="radio" name="gender" value="2"> женский </label>
                             </fieldset>
                         </div>
                         <div class="form-group">
-                            <label for="type">РўРёРї Р°РєРєР°СѓРЅС‚Р°:</label>
+                            <label for="type">Тип аккаунта:</label>
                             <fieldset class="choose_set" name="type" id="type">
-                                <label><input type="radio" name="type" value="1" checked> РѕС‚РєСЂС‹С‚С‹Р№ </label>
-                                <label><input type="radio" name="type" value="2"> Р·Р°РєСЂС‹С‚С‹Р№ </label>
+                                <label><input type="radio" name="type" value="1" checked> открытый </label>
+                                <label><input type="radio" name="type" value="2"> закрытый </label>
                             </fieldset>
                         </div>
 
                         <div class="form-group">
-                            <input type="checkbox" required name="terms" id="terms"> В  <label for="terms">РЇ СЃРѕРіР»Р°СЃРµРЅ СЃ СѓСЃР»РѕРІРёСЏРјРё СЂРµРіРёСЃС‚СЂР°С†РёРё</label><span class="req">* </span>
+                            <input type="checkbox" required name="terms" id="terms">   <label for="terms">Я согласен с условиями регистрации</label><span class="req">* </span>
                         </div>
                         <div class="from-group">
-                            <label class="control-label">Р’С‹Р±РµСЂРёС‚Рµ С„РѕС‚Рѕ РїСЂРѕС„РёР»СЏ</label>
+                            <label class="control-label">Выберите фото профиля</label>
                             <input type="file" class="filestyle" name="data" data-input="false">
                         </div>
 
@@ -112,13 +112,13 @@
     <footer><div class="container-fluid">
         <div class="row">
             <div class="col-sm-12" id="footer">
-                <a href='#'>РџРћР”Р”Р•Р Р–РљРђ</a>
-                <a href='#'>Р‘Р›РћР“</a>
+                <a href='#'>ПОДДЕРЖКА</a>
+                <a href='#'>БЛОГ</a>
                 <a href='#'>API</a>
-                <a href='#'>Р’РђРљРђРќРЎРР</a>
-                <a href='#'>РџР РђР’Рђ</a>
-                <a href='#'>РЈРЎР›РћР’РРЇ</a>
-                <span id='copyright'>В© 2017 INSTAGRAM</span>
+                <a href='#'>ВАКАНСИИ</a>
+                <a href='#'>ПРАВА</a>
+                <a href='#'>УСЛОВИЯ</a>
+                <span id='copyright'>© 2017 INSTAGRAM</span>
             </div>
         </div>
     </div>

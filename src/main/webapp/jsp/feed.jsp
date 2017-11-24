@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" type="text/css" href="css/feed_style.css">
 
+    <script src="<c:url value="/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="/js/like_script.js"/>" type="text/javascript"></script>
+
 </head>
 <body>
 
@@ -24,7 +27,6 @@
             </button>
             <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-responsive img_title"></a>
         </div>
-
 
         <div class="collapse navbar-collapse" id="navbarcontent">
             <ul class="nav navbar-nav">
@@ -46,7 +48,7 @@
         <div class="row">
             <c:forEach items="${posts}" var="post">
                 <c:set var="user" value="${users.get(post.getUserId())}" />
-                <div class="post col-md-6 col-md-offset-3">
+                <div class="post col-md-6 col-md-offset-3" id="${post.getId()}">
                     <div class="row" id="${post.getId()}">
                         <div class="post_header col-md-12">
                             <p><img src="file/${user.getPhoto()}" alt="" class="ava img-responsive img-circle pull-left"> <a href="/user?userName=${user.getUserName()}"><strong>${user.getUserName()}</strong></a><br>
@@ -56,9 +58,9 @@
                             <img src="file/${post.getPhoto()}" class="img-responsive">
                         </div>
                         <div class="post_info col-md-12">
-                            <c:if test="${likeMap.get(post.getId()) == 'unlike'}"><a href="like?postId=${post.getId()}&action=add"><img src="https://avatanplus.com/files/resources/original/57487beed2bb4154f3241d0f.png" class="img-responsive post_like_icon"></a></c:if>
+                            <c:if test="${likeMap.get(post.getId()) == 'unlike'}"><a class="like_btn unlike" href="like?postId=${post.getId()}&action=add"><img src="img/unlike.png" class="img-responsive post_like_icon"></a></c:if>
 
-                            <c:if test="${likeMap.get(post.getId()) == 'like'}"><a href="like?postId=${post.getId()}&action=delete"><img src="http://walljozz.com/images/instagram-heart-png-18.jpg" class="img-responsive post_like_icon"></a></c:if>
+                            <c:if test="${likeMap.get(post.getId()) == 'like'}"><a class="like_btn like" href="like?postId=${post.getId()}&action=delete"><img src="/img/like.jpg" class="img-responsive post_like_icon"></a></c:if>
 
                             <p class="likes_count">${post.getLikesCount()}<strong> отметок "Нравится"</strong></p>
                             <p><strong>${user.getUserName()}: </strong>${post.getDescription()}</p>
@@ -102,5 +104,6 @@
     </div>
 </div>
 </footer>
+
 </body>
 </html>
