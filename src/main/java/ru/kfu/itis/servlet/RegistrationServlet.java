@@ -65,7 +65,7 @@ public class RegistrationServlet  extends HttpServlet {
 
         Part photoPart = req.getPart("data");
         String photoUrl = "";
-        if(!photoPart.getSubmittedFileName().equals("")) {
+        if(photoPart != null && !photoPart.getSubmittedFileName().equals("")) {
             InputStream in = photoPart.getInputStream();
             String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
             String pathToFile = userName + "\\profile_photo\\" + photoPart.getSubmittedFileName();

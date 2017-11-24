@@ -91,7 +91,7 @@ public class SubscriberDAO extends AbstractDAO {
         Connection connection = getConnection();
 
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(DISTINCT \"PERSON_ID\") AS COUNT FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"PERSON_ID\" = ? ");
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(DISTINCT \"SUBSCRIBER_ID\") AS COUNT FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"PERSON_ID\" = ? ");
 
             ps.setInt(1, userId);
 
