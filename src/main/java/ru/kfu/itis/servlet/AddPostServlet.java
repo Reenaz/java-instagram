@@ -1,9 +1,13 @@
 package ru.kfu.itis.servlet;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.kfu.itis.dao.AbstractDAO;
 import ru.kfu.itis.dao.PostDAO;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
+import ru.kfu.itis.util.MultipartRequestUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -20,6 +24,8 @@ import java.sql.SQLException;
 
 @MultipartConfig
 public class AddPostServlet extends HttpServlet {
+    private final static Logger LOG = LoggerFactory.getLogger(AddPostServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -31,16 +37,14 @@ public class AddPostServlet extends HttpServlet {
         User user = ((User) req.getSession().getAttribute("auth"));
         System.out.println(user);
         int userId = user.getId();
-        String description = getStringFromReqPart(req.getPart("description"));
-        String location = getStringFromReqPart(req.getPart("location"));
+        String description = MultipartRequestUtil.getStringFromReqPart(req.getPart("description"));
+        String location = MultipartRequestUtil.getStringFromReqPart(req.getPart("location"));
 
         Part photoPart = req.getPart("photo");
         InputStream in = photoPart.getInputStream();
         String basicPath = System.getProperty("user.home") + "\\java-instagram\\media\\";
         String pathToFile = user.getUserName() + "\\posts\\" + photoPart.getSubmittedFileName();
-        //System.out.println("path = " +path);
-        /*File file = new File(path, photoPart.getSubmittedFileName());
-*/
+
         String imgType = (photoPart.getContentType().split("/")[1]);
         File file = new File(basicPath + pathToFile);
         File dir = file.getParentFile();
@@ -54,7 +58,6 @@ public class AddPostServlet extends HttpServlet {
         out.flush();
         out.close();
 
-        System.out.println(pathToFile);
         String photoUrl = pathToFile;
 
         Post post = new Post(
@@ -72,18 +75,4 @@ public class AddPostServlet extends HttpServlet {
         resp.sendRedirect("/");
     }
 
-
-    public static String getStringFromReqPart(Part part) {
-        String str = "";
-        if (part != null) {
-            try {
-                InputStream in = part.getInputStream();
-                str = IOUtils.toString(in);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return str;
-    }
 }

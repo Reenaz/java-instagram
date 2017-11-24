@@ -1,5 +1,7 @@
 package ru.kfu.itis.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
 
@@ -8,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PostDAO extends AbstractDAO {
+    private final static Logger LOG = LoggerFactory.getLogger(PostDAO.class);
 
     public int add(Post post){
         Connection connection = getConnection();
@@ -34,7 +37,7 @@ public class PostDAO extends AbstractDAO {
             ps.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -66,7 +69,7 @@ public class PostDAO extends AbstractDAO {
 
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -100,7 +103,7 @@ public class PostDAO extends AbstractDAO {
                 posts.add(post);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -136,7 +139,7 @@ public class PostDAO extends AbstractDAO {
 
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -158,7 +161,7 @@ public class PostDAO extends AbstractDAO {
             return result;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }

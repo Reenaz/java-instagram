@@ -81,3 +81,73 @@ footer a:hover {
     margin-left: 50px;
 }
 
+.post{
+    border: 1px solid #efefef;
+    margin-top: 50px;
+}
+.post_image{
+    padding: 20px 20px 10px 20px;
+}
+.post_like_icon{
+    display: inline-block;
+    max-width: 40px;
+}
+.likes_count{
+    padding-bottom: 0;
+}
+.post_header {
+    border-bottom: 1px solid #efefef;
+    padding: 10px 10px 0px 10px;
+}
+.post_header p {
+    vertical-align: center;
+}
+.post_ava {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.post_likes{
+    border-bottom: 1px solid #efefef;
+}
+.post_description{
+    padding-left: 10px;
+}
+.post_date {
+    color: #999;
+    font-size: 12px;
+}
+
+.comments{
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    word-wrap: break-word;
+}
+
+.textarea {
+    padding-left: 0;
+    padding-right: 0;
+}
+.send_btn_div {
+    padding-right: 0;
+
+}
+.send_btn {
+    border:none;
+}
+.send_btn:hover {
+    background-color: white;
+    border:none;
+}
+.text_form {
+    border:none;
+    text-decoration: none;
+}
+
+.del_comment{
+    float: right;
+}
+
+
+

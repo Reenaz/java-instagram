@@ -1,9 +1,15 @@
 package ru.kfu.itis.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.kfu.itis.servlet.AddPostServlet;
+
 import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesUtil {
+    private final static Logger LOG = LoggerFactory.getLogger(AddPostServlet.class);
+
     private static Properties dbProperties;
 
     private static Properties getProperties(String name) throws IOException {
@@ -17,7 +23,7 @@ public class PropertiesUtil {
             try {
                 dbProperties = getProperties("db.properties");
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.error("Error get db properties file", e);
             }
         }
         return dbProperties;

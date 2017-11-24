@@ -24,11 +24,7 @@ public class UserProfileServlet extends HttpServlet {
             resp.sendRedirect("/");
         } else {
             String userName = req.getParameter("userName");
-
-            System.out.println(userName);
             User user = userDAO.findByUserName(userName);
-
-
 
             if(user.equals(authUser)) {
                 resp.sendRedirect("/profile");
@@ -62,9 +58,4 @@ public class UserProfileServlet extends HttpServlet {
         }
     }
 
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-    }
 }

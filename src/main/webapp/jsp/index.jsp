@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,14 +12,11 @@
   <link rel="stylesheet" type="text/css" href="<c:url value="/css/login_style.css"/>">
   <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css"/>">
 
-
-
   </head>
 <body>
 !-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" >
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarcontent" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -26,27 +24,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="https://www.hyperpalace.com/wp-content/uploads/2017/08/white_instagram_text_logo1.png" class="img-responsive img_title"></a>
+      <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-responsive img_title"></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbarcontent">
       <ul class="nav navbar-nav">
         <li><a href="#">О нас</a></li>
         <li><a href="#">Контакты</a></li>
       </ul>
 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
   <main>
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/640px-Instagram_logo.svg.png" class="img-responsive">
+          <img src="img/instagram.png" class="img-responsive">
           <div class="account-wall">
-            <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+            <img class="profile-img" src="img/non-auth-user.png"
                  alt="">
             <form class="form-signin" action="/" method="post">
               <input type="text" name="userName" class="form-control" placeholder="Имя пользователя" required autofocus>

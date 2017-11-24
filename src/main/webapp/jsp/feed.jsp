@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>Imstagram</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" type="text/css" href="css/feed_style.css">
 
 </head>
@@ -15,7 +15,6 @@
 !-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarcontent" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -23,10 +22,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="https://www.hyperpalace.com/wp-content/uploads/2017/08/white_instagram_text_logo1.png" class="img-responsive img_title"></a>
+            <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-responsive img_title"></a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="navbarcontent">
             <ul class="nav navbar-nav">
                 <li><a href="#">О нас</a></li>
@@ -38,8 +37,8 @@
                 <li><a href="profile">Профиль</a></li>
                 <li><a href="logout">Выход</a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 
 <main>
@@ -48,14 +47,10 @@
             <c:forEach items="${posts}" var="post">
                 <c:set var="user" value="${users.get(post.getUserId())}" />
                 <div class="post col-md-6 col-md-offset-3">
-                    <div class="row">
+                    <div class="row" id="${post.getId()}">
                         <div class="post_header col-md-12">
-
-
                             <p><img src="file/${user.getPhoto()}" alt="" class="ava img-responsive img-circle pull-left"> <a href="/user?userName=${user.getUserName()}"><strong>${user.getUserName()}</strong></a><br>
                                 <small>${post.getLocation()}</small></p>
-
-
                         </div>
                         <div class="post_image col-md-12">
                             <img src="file/${post.getPhoto()}" class="img-responsive">
@@ -72,7 +67,7 @@
                         </div>
                         <div class="comments col-md-12">
                             <c:forEach items="${post.getComments()}" var="comment">
-                                <p><strong>${commentUserNameMap.get(comment.getId())}:</strong>${comment.getText()}<a class="del_comment" href="/comment?commentId=${comment.getId()}">удалить</a></p>
+                                <p><strong>${commentUserNameMap.get(comment.getId())}:</strong>${comment.getText()}<a class="del_comment" href="/comment?postId=${post.getId()}&commentId=${comment.getId()}">удалить</a></p>
                             </c:forEach>
                         </div>
                         <div class="comment_area col-md-12">
@@ -86,21 +81,12 @@
                                 </div>
                             </form>
                         </div>
-
-
-
                 </div>
             </div>
-
             </c:forEach>
-
-
-                </div>
-            </div>
-
+        </div>
+    </div>
 </main>
-
-
 
 <footer><div class="container-fluid">
     <div class="row">
@@ -116,10 +102,5 @@
     </div>
 </div>
 </footer>
-
-
-
-
-
 </body>
 </html>

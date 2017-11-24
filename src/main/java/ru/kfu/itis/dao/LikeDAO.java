@@ -1,5 +1,7 @@
 package ru.kfu.itis.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kfu.itis.entity.Like;
 import ru.kfu.itis.entity.Post;
 
@@ -9,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LikeDAO extends AbstractDAO {
+    private final static Logger LOG = LoggerFactory.getLogger(LikeDAO.class);
 
     public int add(Like like){
 
@@ -26,7 +29,7 @@ public class LikeDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -47,7 +50,7 @@ public class LikeDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -75,7 +78,7 @@ public class LikeDAO extends AbstractDAO {
                 );
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }

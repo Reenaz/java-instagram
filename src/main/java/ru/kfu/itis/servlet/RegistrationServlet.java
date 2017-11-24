@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.postgresql.core.Oid;
 import ru.kfu.itis.dao.UserDAO;
 import ru.kfu.itis.entity.User;
+import ru.kfu.itis.util.MultipartRequestUtil;
 
 
 import javax.servlet.ServletException;
@@ -54,14 +55,14 @@ public class RegistrationServlet  extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = getStringFromReqPart(req.getPart("userName"));
-        String email = getStringFromReqPart(req.getPart("email"));
-        String password = DigestUtils.md5Hex(getStringFromReqPart(req.getPart("password")));
-        String description = getStringFromReqPart(req.getPart("descr"));
-        String name = getStringFromReqPart(req.getPart("name"));;
-        int gender = Integer.parseInt(getStringFromReqPart(req.getPart("gender")));
-        int type = Integer.parseInt(getStringFromReqPart(req.getPart("type")));
-        String phoneNumber = getStringFromReqPart(req.getPart("phoneNumber"));
+        String userName = MultipartRequestUtil.getStringFromReqPart(req.getPart("userName"));
+        String email = MultipartRequestUtil.getStringFromReqPart(req.getPart("email"));
+        String password = DigestUtils.md5Hex(MultipartRequestUtil.getStringFromReqPart(req.getPart("password")));
+        String description = MultipartRequestUtil.getStringFromReqPart(req.getPart("descr"));
+        String name = MultipartRequestUtil.getStringFromReqPart(req.getPart("name"));;
+        int gender = Integer.parseInt(MultipartRequestUtil.getStringFromReqPart(req.getPart("gender")));
+        int type = Integer.parseInt(MultipartRequestUtil.getStringFromReqPart(req.getPart("type")));
+        String phoneNumber = MultipartRequestUtil.getStringFromReqPart(req.getPart("phoneNumber"));
 
         Part photoPart = req.getPart("data");
         String photoUrl = "";
@@ -97,28 +98,12 @@ public class RegistrationServlet  extends HttpServlet {
                 photoUrl
         );
 
-        System.out.println(user);
         UserDAO userDAO = new UserDAO();
         int id = userDAO.add(user);
-
-        System.out.println(userDAO.get(id));
 
         resp.getWriter().print("Successful registration!");
         req.getRequestDispatcher("/").forward(req, resp);
 
     }
 
-    public static String getStringFromReqPart(Part part) {
-        String str = "";
-        if (part != null) {
-            try {
-                InputStream in = part.getInputStream();
-                str = IOUtils.toString(in);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return str;
-    }
 }

@@ -1,5 +1,7 @@
 package ru.kfu.itis.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
 
@@ -14,6 +16,7 @@ import java.util.Map;
 
 
 public class UserDAO extends AbstractDAO{
+    private final static Logger LOG = LoggerFactory.getLogger(UserDAO.class);
 
     public int add(User user) {
         Connection connection = getConnection();
@@ -39,9 +42,10 @@ public class UserDAO extends AbstractDAO{
                 userId = rs.getInt(1);
             }
 
+            rs.close();
             ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -74,8 +78,12 @@ public class UserDAO extends AbstractDAO{
                         rs.getString("PHOTO_URL")
                 );
             }
+
+            rs.close();
+            ps.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -109,8 +117,12 @@ public class UserDAO extends AbstractDAO{
                         rs.getString("PHOTO_URL")
                 );
             }
+
+            rs.close();
+            ps.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -136,10 +148,12 @@ public class UserDAO extends AbstractDAO{
 
             int result = ps.executeUpdate();
 
+            ps.close();
+
             return result;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -161,8 +175,12 @@ public class UserDAO extends AbstractDAO{
             while(rs.next()) {
                 photoUrl = rs.getString("PHOTO_URL");
             }
+
+            rs.close();
+            ps.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }

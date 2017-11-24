@@ -1,5 +1,7 @@
 package ru.kfu.itis.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kfu.itis.entity.Comment;
 import ru.kfu.itis.entity.Subscriber;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 
 public class SubscriberDAO extends AbstractDAO {
+    private final static Logger LOG = LoggerFactory.getLogger(SubscriberDAO.class);
 
     public int add(Subscriber subscriber){
 
@@ -28,7 +31,7 @@ public class SubscriberDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -50,7 +53,7 @@ public class SubscriberDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -73,12 +76,13 @@ public class SubscriberDAO extends AbstractDAO {
                result = rs.getInt("COUNT");
            }
 
+            rs.close();
             ps.close();
 
             return result;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -100,8 +104,12 @@ public class SubscriberDAO extends AbstractDAO {
             while(rs.next()) {
                 count = rs.getInt("COUNT");
             }
+
+            rs.close();
+            ps.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -123,8 +131,12 @@ public class SubscriberDAO extends AbstractDAO {
             while(rs.next()) {
                 count = rs.getInt("COUNT");
             }
+
+            rs.close();
+            ps.close();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -148,8 +160,11 @@ public class SubscriberDAO extends AbstractDAO {
                 personId = rs.getInt("PERSON_ID");
                 personIdList.add(personId);
             }
+
+            rs.close();
+            ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }

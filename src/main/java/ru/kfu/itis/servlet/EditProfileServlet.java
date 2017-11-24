@@ -2,11 +2,15 @@ package ru.kfu.itis.servlet;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.kfu.itis.dao.AbstractDAO;
 import ru.kfu.itis.dao.PostDAO;
 import ru.kfu.itis.dao.SubscriberDAO;
 import ru.kfu.itis.dao.UserDAO;
 import ru.kfu.itis.entity.Post;
 import ru.kfu.itis.entity.User;
+import ru.kfu.itis.util.MultipartRequestUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -21,6 +25,7 @@ import java.util.List;
 
 @MultipartConfig
 public class EditProfileServlet extends HttpServlet {
+    private final static Logger LOG = LoggerFactory.getLogger(AbstractDAO.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,19 +46,19 @@ public class EditProfileServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User sessionUser = (User) session.getAttribute("auth");
 
-        String email = getStringFromReqPart(req.getPart("email"));
+        String email = MultipartRequestUtil.getStringFromReqPart(req.getPart("email"));
         String password = null;
-        if(getStringFromReqPart(req.getPart("newPassword")) == null || getStringFromReqPart(req.getPart("newPassword")).equals("")) {
-            password = DigestUtils.md5Hex(getStringFromReqPart(req.getPart("password")));
+        if(MultipartRequestUtil.getStringFromReqPart(req.getPart("newPassword")) == null || MultipartRequestUtil.getStringFromReqPart(req.getPart("newPassword")).equals("")) {
+            password = DigestUtils.md5Hex(MultipartRequestUtil.getStringFromReqPart(req.getPart("password")));
         } else{
-            password = DigestUtils.md5Hex(getStringFromReqPart(req.getPart("newPassword")));
+            password = DigestUtils.md5Hex(MultipartRequestUtil.getStringFromReqPart(req.getPart("newPassword")));
         }
 
-        String description = getStringFromReqPart(req.getPart("description"));
-        String name = getStringFromReqPart(req.getPart("name"));
-        int gender = Integer.parseInt(getStringFromReqPart(req.getPart("gender")));
-        int type = Integer.parseInt(getStringFromReqPart(req.getPart("type")));
-        String phoneNumber = getStringFromReqPart(req.getPart("phoneNumber"));
+        String description = MultipartRequestUtil.getStringFromReqPart(req.getPart("description"));
+        String name = MultipartRequestUtil.getStringFromReqPart(req.getPart("name"));
+        int gender = Integer.parseInt(MultipartRequestUtil.getStringFromReqPart(req.getPart("gender")));
+        int type = Integer.parseInt(MultipartRequestUtil.getStringFromReqPart(req.getPart("type")));
+        String phoneNumber = MultipartRequestUtil.getStringFromReqPart(req.getPart("phoneNumber"));
 
         Part photoPart = req.getPart("photo");
         String photoUrl = sessionUser.getPhoto();
@@ -75,9 +80,6 @@ public class EditProfileServlet extends HttpServlet {
 
             photoUrl = pathToFile;
         }
-
-
-
 
         User user = new User(
                 sessionUser.getUserName(),
@@ -102,18 +104,5 @@ public class EditProfileServlet extends HttpServlet {
 
     }
 
-    public static String getStringFromReqPart(Part part) {
-        String str = "";
-        if (part != null) {
-            try {
-                InputStream in = part.getInputStream();
-                str = IOUtils.toString(in);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return str;
-    }
 
 }

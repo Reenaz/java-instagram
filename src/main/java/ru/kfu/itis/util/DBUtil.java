@@ -1,5 +1,10 @@
 package ru.kfu.itis.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.kfu.itis.entity.Like;
+import ru.kfu.itis.servlet.AddPostServlet;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +12,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBUtil {
+    private final static Logger LOG = LoggerFactory.getLogger(AddPostServlet.class);
+
     private static DataSource dataSource;
 
     private static Connection connection;
@@ -24,13 +31,10 @@ public class DBUtil {
             try {
                 connection = DriverManager.getConnection(URL_DB, USERNAME_DB, PASSWORD_DB);
             } catch (SQLException ex) {
-                // log an exception. fro example:
-                System.out.println("Failed to create the database connection.");
+                LOG.error("Failed to create the database connection.", ex);
             }
         } catch (ClassNotFoundException ex) {
-            // log an exception. for example:
-            System.out.println("Driver not found.");
-            ex.printStackTrace();
+            LOG.error("Driver not found.", ex);
 
         }
         return connection;

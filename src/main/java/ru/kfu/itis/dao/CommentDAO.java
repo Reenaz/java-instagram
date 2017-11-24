@@ -1,5 +1,7 @@
 package ru.kfu.itis.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kfu.itis.entity.Comment;
 import ru.kfu.itis.entity.Post;
 
@@ -11,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CommentDAO extends AbstractDAO {
+    private final static Logger LOG = LoggerFactory.getLogger(CommentDAO.class);
 
     public int add(Comment comment){
 
@@ -28,7 +31,7 @@ public class CommentDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -61,7 +64,7 @@ public class CommentDAO extends AbstractDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
@@ -81,7 +84,7 @@ public class CommentDAO extends AbstractDAO {
 
             return result;
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }

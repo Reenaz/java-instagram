@@ -27,9 +27,6 @@ public class SubscribeServlet extends HttpServlet {
             String action = req.getParameter("action");
             User user = userDAO.findByUserName(userName);
 
-            System.out.println(userName);
-            System.out.println(action);
-
             SubscriberDAO subscriberDAO = new SubscriberDAO();
 
             if(action.equals("add")) {

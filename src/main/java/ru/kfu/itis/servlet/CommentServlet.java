@@ -24,11 +24,12 @@ public class CommentServlet extends HttpServlet {
 
         if( sessionUser != null && userDAO.get(sessionUser.getId()).equals(sessionUser)) {
             int commentId = Integer.parseInt(req.getParameter("commentId"));
+            int postId = Integer.parseInt(req.getParameter("postId"));
 
             CommentDAO commentDAO = new CommentDAO();
             commentDAO.delete(commentId);
 
-            resp.sendRedirect("feed");
+            resp.sendRedirect("feed#" + postId);
         }
     }
 
@@ -51,7 +52,7 @@ public class CommentServlet extends HttpServlet {
                     null
             ));
 
-            resp.sendRedirect("/feed");
+            resp.sendRedirect("/feed#" + postId);
 
 
         } else{

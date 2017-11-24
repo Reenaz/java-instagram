@@ -5,12 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Imstagram</title>
-    <link href="<c:url value="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Instagram</title>
+
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/reg_style.css"/>">
 
-    <script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>"></script>
+    <script src="<c:url value="/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/bootstrap-filestyle.min.js"/>"> </script>
 </head>
 <body>
@@ -24,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="https://www.hyperpalace.com/wp-content/uploads/2017/08/white_instagram_text_logo1.png" class="img-responsive img_title"></a>
+            <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-responsive img_title"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarcontent">
@@ -44,54 +46,54 @@
                     <fieldset>
 
                         <div class="form-group">
-                            <label for="userName"><span class="req">* </span> Username: <small>This will be your login user name</small> </label>
+                            <label for="userName"><span class="req">* </span> Логин: </label>
                             <input required type="text" name="userName" id="userName" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" />
                         </div>
 
                         <div class="form-group">
-                            <label for="phoneNumber"><span class="req">* </span> Phone number: </label>
+                            <label for="phoneNumber"><span class="req">* </span> Номер телефона: </label>
                             <input class="form-control" type="text" name="phoneNumber" id = "phoneNumber" onkeyup = "Validate(this)" required />
                         </div>
 
                         <div class="form-group">
-                            <label for="email"><span class="req">* </span> E-mail Address: </label>
+                            <label for="email"><span class="req">* </span> E-mail: </label>
                             <input class="form-control" type="text" name="email" id = "email" onkeyup = "Validate(this)" required />
                         </div>
 
                         <div class="form-group">
-                            <label for="name"><span class="req">* </span> Name: </label>
+                            <label for="name"><span class="req">* </span> Имя: </label>
                             <input class="form-control" required type="text" name="name" id = "name"  onchange="email_validate(this.value);" />
                         </div>
 
                         <div class="form-group">
-                            <label for="description"><span class="req">* </span> Description:   </label>
+                            <label for="description"><span class="req">* </span> О себе:   </label>
                             <input class="form-control" type="text" name="description" id = "description" onkeyup = "Validate(this)" />
                         </div>
 
                         <div class="form-group">
-                            <label for="password"><span class="req">* </span> Password: </label>
-                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="password" /> </p>
+                            <label for="password"><span class="req">* </span> Пароль: </label>
+                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="password" />
 
-                            <label for="confirm_password"><span class="req">* </span> Password Confirm: </label>
+                            <label for="confirm_password"><span class="req">* </span> Повтор пароля: </label>
                             <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="confirm_password" />
                         </div>
                         <div class="form-group">
                             <label for="gender">Ваш пол:</label>
                             <fieldset class="choose_set" name="gender" id="gender">
-                                <label><input type="radio" name="gender"  value="1" checked>male</label>
-                                <label><input type="radio" name="gender" value="2">female</label>
+                                <label><input type="radio" name="gender"  value="1" checked> мужской </label>
+                                <label><input type="radio" name="gender" value="2"> женский </label>
                             </fieldset>
                         </div>
                         <div class="form-group">
                             <label for="type">Тип аккаунта:</label>
                             <fieldset class="choose_set" name="type" id="type">
-                                <label><input type="radio" name="type" value="1" checked>открытый</label>
-                                <label><input type="radio" name="type" value="2">закрытый</label>
+                                <label><input type="radio" name="type" value="1" checked> открытый </label>
+                                <label><input type="radio" name="type" value="2"> закрытый </label>
                             </fieldset>
                         </div>
 
                         <div class="form-group">
-                            <input type="checkbox" required name="terms" id="terms">   <label for="terms">I agree with the <a href="#" title="You may read our terms and conditions by clicking on this link">terms and conditions</a> for Registration.</label><span class="req">* </span>
+                            <input type="checkbox" required name="terms" id="terms">   <label for="terms">Я согласен с условиями регистрации</label><span class="req">* </span>
                         </div>
                         <div class="from-group">
                             <label class="control-label">Выберите фото профиля</label>
@@ -106,9 +108,7 @@
             </div>
         </div>
     </div>
-
 </main>
-
     <footer><div class="container-fluid">
         <div class="row">
             <div class="col-sm-12" id="footer">
@@ -123,7 +123,5 @@
         </div>
     </div>
     </footer>
-
-
 </body>
 </html>
