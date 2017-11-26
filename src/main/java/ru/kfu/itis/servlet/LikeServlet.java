@@ -50,7 +50,7 @@ public class LikeServlet extends HttpServlet{
                 }
             }
 
-            resp.sendRedirect("/feed#" + postId);
+            //resp.sendRedirect("/feed#" + postId);
 
 
 

@@ -53,7 +53,7 @@ public class CommentServlet extends HttpServlet {
                 ));
             }
 
-            resp.sendRedirect("/feed#" + postId);
+            //resp.sendRedirect("/feed#" + postId);
 
 
         } else{

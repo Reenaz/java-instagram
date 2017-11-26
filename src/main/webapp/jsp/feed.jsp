@@ -11,6 +11,7 @@
 
     <script src="<c:url value="/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/js/like_script.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/js/add_comment.js"/>" type="text/javascript"></script>
 
 </head>
 <body>
@@ -62,7 +63,7 @@
 
                             <c:if test="${likeMap.get(post.getId()) == 'like'}"><a class="like_btn like" href="like?postId=${post.getId()}&action=delete"><img src="/img/like.jpg" class="img-responsive post_like_icon"></a></c:if>
 
-                            <p class="likes_count">${post.getLikesCount()}<strong> отметок "Нравится"</strong></p>
+                            <p class="likes_count"><strong>${post.getLikesCount()}</strong> отметок "Нравится"</p>
                             <p><strong>${user.getUserName()}: </strong>${post.getDescription()}</p>
                             <p class="post_date">${post.getDate()}</p>
 
@@ -76,7 +77,7 @@
                             <form action="/comment" method="POST" >
                                 <input type="hidden" name="postId" value="${post.getId()}">
                                 <div class="textarea col-md-8">
-                                    <textarea name="comment" class="text_form form-control" placeholder="добавьте комментарий.." rows="2"></textarea>
+                                    <textarea name="comment" class="text_form comment_area form-control" placeholder="добавьте комментарий.." rows="2"></textarea>
                                 </div>
                                 <div class="send_btn_div col-md-4">
                                     <input type="submit" value="Отправить" class="send_btn form-control btn btn-default btn-lg btn-block">
