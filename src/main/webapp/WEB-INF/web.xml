@@ -48,6 +48,14 @@
         <servlet-name>LikeServlet</servlet-name>
         <servlet-class>ru.kfu.itis.servlet.LikeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetSubscribedPersonServlet</servlet-name>
+        <servlet-class>ru.kfu.itis.servlet.GetSubscribedPersonServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSubscribersServlet</servlet-name>
+        <servlet-class>ru.kfu.itis.servlet.GetSubscribersServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -88,6 +96,14 @@
     <servlet-mapping>
         <servlet-name>LikeServlet</servlet-name>
         <url-pattern>/like/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSubscribedPersonServlet</servlet-name>
+        <url-pattern>/getSubscribedPerson/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSubscribersServlet</servlet-name>
+        <url-pattern>/getSubscribers/*</url-pattern>
     </servlet-mapping>
     
 

@@ -149,5 +149,14 @@ footer a:hover {
     float: right;
 }
 
+.profile_info a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+.profile_info a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 

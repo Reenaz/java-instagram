@@ -83,6 +83,8 @@ public class RegistrationServlet  extends HttpServlet {
             out.close();
 
             photoUrl = pathToFile;
+        } else {
+            photoUrl = System.getProperty("user.home") + "\\java-instagram\\default\\default_user_img.jpg";
         }
 
 

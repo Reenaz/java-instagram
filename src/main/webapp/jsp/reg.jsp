@@ -50,35 +50,35 @@
 
                         <div class="form-group">
                             <label for="userName"><span class="req">* </span> Логин: </label>
-                            <input required type="text" name="userName" id="userName" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" />
+                            <input required type="text" name="userName" id="userName" class="form-control phone" maxlength="28"  />
                         </div>
 
                         <div class="form-group">
                             <label for="phoneNumber"><span class="req">* </span> Номер телефона: </label>
-                            <input class="form-control" type="text" name="phoneNumber" id = "phoneNumber" onkeyup = "Validate(this)" required />
+                            <input class="form-control" type="text" name="phoneNumber" id = "phoneNumber" pattern="^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$ " required />
                         </div>
 
                         <div class="form-group">
                             <label for="email"><span class="req">* </span> E-mail: </label>
-                            <input class="form-control" type="text" name="email" id = "email" onkeyup = "Validate(this)" required />
+                            <input class="form-control" type="text" name="email" id = "email"  required />
                         </div>
 
                         <div class="form-group">
                             <label for="name"><span class="req">* </span> Имя: </label>
-                            <input class="form-control" required type="text" name="name" id = "name"  onchange="email_validate(this.value);" />
+                            <input class="form-control" required type="text" name="name" id = "name" />
                         </div>
 
                         <div class="form-group">
                             <label for="description"><span class="req">* </span> О себе:   </label>
-                            <input class="form-control" type="text" name="description" id = "description" onkeyup = "Validate(this)" />
+                            <input class="form-control" type="text" name="description" id = "description"/>
                         </div>
 
                         <div class="form-group">
                             <label for="password"><span class="req">* </span> Пароль: </label>
-                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="password" />
+                            <input required name="password" type="password" class="form-control inputpass" minlength="6" maxlength="20"  id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
 
                             <label for="confirm_password"><span class="req">* </span> Повтор пароля: </label>
-                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="confirm_password" />
+                            <input required name="password" type="password" class="form-control inputpass" minlength="6" maxlength="20" placeholder="Enter again to validate"  id="confirm_password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
                         </div>
                         <div class="form-group">
                             <label for="gender">Ваш пол:</label>

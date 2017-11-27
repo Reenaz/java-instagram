@@ -171,4 +171,34 @@ public class SubscriberDAO extends AbstractDAO {
 
         return personIdList;
     }
+
+    public List<Integer> getAllSubscribers(int userId) {
+        List<Integer> subscriberIdList = new LinkedList<>();
+        Integer personId;
+        Connection connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT \"SUBSCRIBER_ID\" FROM \"java-instagram\".\"SUBSCRIBERS\" WHERE \"PERSON_ID\" = ? ");
+
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                personId = rs.getInt("SUBSCRIBER_ID");
+                subscriberIdList.add(personId);
+            }
+
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            LOG.error("SQL error", e);
+        } finally {
+            closeConnection();
+        }
+
+        return subscriberIdList;
+    }
+
+
 }

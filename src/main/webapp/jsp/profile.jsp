@@ -15,6 +15,8 @@
 
     <script src="<c:url value="/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/js/get_subscribers.js"/>"></script>
+
 </head>
 <body>
 <% User user = (User) request.getAttribute("user");%>
@@ -36,6 +38,46 @@
         </div>
     </div>
 </div>
+
+<div id="subsribers_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Подписчики</h4>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div class="modal-body">
+                <ul class="subscribers_list">
+                    <li><h4>Список</h4></li>
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="subsribed_person_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Пользователи, на которых вы подписаны</h4>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div class="modal-body">
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 
 
 <nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -75,9 +117,9 @@
             <div class="col-lg-7 profile_info">
                 <p><h2>${user.getUserName()}<a href="edit" class="btn btn-default edit_profile">Редактировать профиль</a></h2></p>
                 <ul class="list-inline">
-                    <li><h4><strong>${countOfPosts}</strong> публикаций</h4></li>
-                    <li><h4><strong>${subscribersCount}</strong> подписчиков</h4><li>
-                    <li><h4>Подписки: <strong>${countOfSignPerson}</strong></h4></li>
+                    <li><a href="#"><h4><strong>${countOfPosts}</strong> публикаций</h4></a></li>
+                    <li><a href="#" id="get_sub" class="get_sub"><h4><strong>${subscribersCount}</strong> подписчиков</h4></a><li>
+                    <li><a href="#"><h4>Подписки: <strong>${countOfSignPerson}</strong></h4></a></li></li>
                 </ul>
                 <ul class="list-inline">
                     <li><h4><strong>${user.getName()}</strong></h4></li>
