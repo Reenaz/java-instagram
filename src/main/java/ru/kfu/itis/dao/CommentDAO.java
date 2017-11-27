@@ -16,27 +16,32 @@ public class CommentDAO extends AbstractDAO {
     private final static Logger LOG = LoggerFactory.getLogger(CommentDAO.class);
 
     public int add(Comment comment){
+        int commentId = -1;
 
         Connection connection = getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"COMMENTS\"(\"POST_ID\", \"USER_ID\", \"TEXT\", \"DATE\") VALUES(?,?,?,current_date)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO \"java-instagram\".\"COMMENTS\"(\"POST_ID\", \"USER_ID\", \"TEXT\", \"DATE\") VALUES(?,?,?,current_date)", new String[]{"ID"});
 
             ps.setInt(1, comment.getPostId());
             ps.setInt(2, comment.getUserId());
             ps.setString(3, comment.getText());
 
-            int result = ps.executeUpdate();
+            ps.executeUpdate();
 
+            ResultSet rs = ps.getGeneratedKeys();
+            while(rs.next()) {
+                commentId = rs.getInt("ID");
+            }
+
+            rs.close();
             ps.close();
-
-            return result;
         } catch (SQLException e) {
             LOG.error("SQL error", e);
         } finally {
             closeConnection();
         }
 
-        return 0;
+        return commentId;
     }
 
     public List<Comment> getCommentsByPostId(int postId) {

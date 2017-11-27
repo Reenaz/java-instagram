@@ -12,6 +12,7 @@
     <script src="<c:url value="/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/js/like_script.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/js/add_comment.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/js/del_comment.js"/>" type="text/javascript"></script>
 
 </head>
 <body>
@@ -70,14 +71,14 @@
                         </div>
                         <div class="comments col-md-12">
                             <c:forEach items="${post.getComments()}" var="comment">
-                                <p><strong>${commentUserNameMap.get(comment.getId())}:</strong>${comment.getText()}<a class="del_comment" href="/comment?postId=${post.getId()}&commentId=${comment.getId()}">удалить</a></p>
+                                <p class="comment" id="comment${comment.getId()}"><strong>${commentUserNameMap.get(comment.getId())}:</strong>${comment.getText()}<a class="del_comment" href="/comment?postId=${post.getId()}&commentId=${comment.getId()}">удалить</a></p>
                             </c:forEach>
                         </div>
                         <div class="comment_area col-md-12">
                             <form action="/comment" method="POST" >
                                 <input type="hidden" name="postId" value="${post.getId()}">
                                 <div class="textarea col-md-8">
-                                    <textarea name="comment" class="text_form comment_area form-control" placeholder="добавьте комментарий.." rows="2"></textarea>
+                                    <textarea name="comment" class="text_form comment_textarea form-control" placeholder="добавьте комментарий.." rows="2"></textarea>
                                 </div>
                                 <div class="send_btn_div col-md-4">
                                     <input type="submit" value="Отправить" class="send_btn form-control btn btn-default btn-lg btn-block">
