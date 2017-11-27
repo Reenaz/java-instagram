@@ -16,6 +16,7 @@
     <script src="<c:url value="/js/jquery.min.js"/>"></script>
     <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/js/get_subscribers.js"/>"></script>
+    <script src="<c:url value="/js/get_subscribed.js"/>"></script>
 
 </head>
 <body>
@@ -39,8 +40,8 @@
     </div>
 </div>
 
-<div id="subsribers_modal" class="modal fade">
-    <div class="modal-dialog">
+<div id="subscribers_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <!-- Заголовок модального окна -->
             <div class="modal-header">
@@ -49,8 +50,8 @@
             </div>
             <!-- Основное содержимое модального окна -->
             <div class="modal-body">
-                <ul class="subscribers_list">
-                    <li><h4>Список</h4></li>
+                <ul class="list-group subscribers_list">
+
 
                 </ul>
             </div>
@@ -60,7 +61,7 @@
     </div>
 </div>
 
-<div id="subsribed_person_modal" class="modal fade">
+<div id="subscribed_modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Заголовок модального окна -->
@@ -70,7 +71,10 @@
             </div>
             <!-- Основное содержимое модального окна -->
             <div class="modal-body">
+                <ul class="list-group subscribed_list">
 
+
+                </ul>
             </div>
 
 
@@ -119,7 +123,7 @@
                 <ul class="list-inline">
                     <li><a href="#"><h4><strong>${countOfPosts}</strong> публикаций</h4></a></li>
                     <li><a href="#" id="get_sub" class="get_sub"><h4><strong>${subscribersCount}</strong> подписчиков</h4></a><li>
-                    <li><a href="#"><h4>Подписки: <strong>${countOfSignPerson}</strong></h4></a></li></li>
+                    <li><a href="#" id="get_person" class="get_sub"><h4>Подписки: <strong>${countOfSignPerson}</strong></h4></a></li></li>
                 </ul>
                 <ul class="list-inline">
                     <li><h4><strong>${user.getName()}</strong></h4></li>

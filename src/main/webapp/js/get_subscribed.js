@@ -1,20 +1,20 @@
 $(document).ready(function() {
-    $('#get_sub').click(function(event) {
+    $('#get_person').click(function(event) {
         event.preventDefault();
-        var modal = $('#subscribers_modal');
-        var list = $(modal).find('.subscribers_list')[0];
+        var modal = $('#subscribed_modal');
+        var list = $(modal).find('.subscribed_list')[0];
 
-        $.get('/getSubscribers').done(function (data) {
+        $.get('/getSubscribedPerson').done(function (data) {
             $.each(data, function(index, item) {
                 $(list).append("<li class=\"list-group-item subscriber\"><p><img src=\"file/" + item.photo + "\" class=\"subscriber_img img-responsive img-circle\" ><a href=\"/user?userName=" + item.userName + "\">"+ item.userName +"</a></p></li>")
             });
-            $('#subscribers_modal').modal('show');
+            $('#subscribed_modal').modal('show');
         })
     });
 
-    $('#subscribers_modal ').on('click', function(event) {
-        $('#subscribers_modal ').modal('hide');
-        $('.subscribers_list').empty();
+    $('#subscribed_modal ').on('click', function(event) {
+        $('#subscribed_modal ').modal('hide');
+        $('.subscribed_list').empty();
         console.log(list);
     });
 
