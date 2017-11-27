@@ -20,7 +20,7 @@ $(document).ready(function() {
                 var new_comment = "<p class=\"comment\" id=\"comment" + comment_id + "\"><strong>" + user_name + ": </strong>" + comment_txt + "<a class=\"del_comment\" href=\"/comment?postId=" + post_id + "&commentId=" + comment_id + "\">удалить</a></p>";
                 console.log(new_comment);
                 $(comments_area).append(new_comment);
-                comment_area.reset();
+                $(comment_area).val('');
             });
 
 

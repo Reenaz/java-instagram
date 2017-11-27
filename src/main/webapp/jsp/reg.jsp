@@ -7,6 +7,9 @@
 <head>
     <title>Instagram</title>
 
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/reg_style.css"/>">

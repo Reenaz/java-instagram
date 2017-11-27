@@ -6,6 +6,9 @@
 <html>
 <head>
     <title>Imstagram</title>
+
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css"/>">
     <link rel="stylesheet" type="text/css" href="css/edit_profile_style.css">
 
