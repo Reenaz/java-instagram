@@ -32,9 +32,6 @@ public class LoginServlet extends HttpServlet {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
 
-        System.out.println(password);
-        System.out.print(userName);
-
         UserDAO userDAO = new UserDAO();
         User user = userDAO.findByUserName(userName);
         String passwordHex = DigestUtils.md5Hex(password);
@@ -47,8 +44,8 @@ public class LoginServlet extends HttpServlet {
 
 
         }else{
-            resp.getWriter().print("Sorry invalid login/password");
-            resp.sendRedirect("/");
+            req.setAttribute("error", "true");
+            req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
         }
     }
 }

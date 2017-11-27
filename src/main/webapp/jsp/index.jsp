@@ -58,6 +58,8 @@
                 Запомнить меня
               </label>
               <a href="#" class="pull-right need-help">Помощь </a><span class="clearfix"></span>
+              <c:if test="${error == 'true'}"><h5 style="color:red">Неправильный логин или пароль</h5></c:if>
+
             </form>
           </div>
           <a href="/reg" class="text-center new-account">Создать аккаунт </a>
